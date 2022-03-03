@@ -1,0 +1,40 @@
+.link{
+    display: inline-block;
+    margin: 0 1.75em 0 auto;
+    color: var(--light-black-clr);
+    font-size: var(--fz-link-see-more);
+    font-weight: 500;
+    text-transform: uppercase;
+    word-spacing: 2px;
+    border-bottom: solid 2px transparent;
+    transition-property:  color, border-bottom;
+    transition-duration: .2s;
+    transition-timing-function: ease-in;
+}
+.link:focus{
+    color: var(--amber-clr);
+    border-bottom-color: var(--amber-clr);
+    outline: none;
+}
+.link::after{
+    content: '\279D';
+    display: inline-block;
+    margin-left: .25em;
+}
+
+@media (hover:hover) and (pointer:fine){
+    .link:hover{
+        color: var(--amber-clr);
+        border-bottom-color: var(--amber-clr);
+    }
+}
+@supports selector(:focus-visible){
+    .link:focus{
+        color: var(--light-black-clr);
+        border-bottom-color: transparent;
+    }
+    .link:focus-visible{
+        color: var(--amber-clr);
+        border-bottom-color: var(--amber-clr);
+    }
+}

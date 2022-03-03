@@ -8,12 +8,12 @@ import {
 import App from './App';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
-        <Routes path='/*'>
-          <Route index element={<App/>}/>
-        </Routes>
-    </React.StrictMode>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/*' element={<App/>}/>
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById('app')
 );

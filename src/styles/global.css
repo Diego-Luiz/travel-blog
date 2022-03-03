@@ -1,0 +1,54 @@
+@font-face{
+    font-family: 'Rubik';
+    src: url(../assets/fonts/Rubik/Rubik-VariableFont_wght.ttf) format("truetype"),
+        url(../assets/fonts/Rubik/Rubik-Italic-VariableFont_wght.ttf) format("truetype");
+}
+
+:root{
+    --black-clr: #000000;
+	--light-black-clr: #303133;
+	--light-gray-clr: #eaeaea;
+	--cyan-gray-clr: #abb8c3;
+	--white-clr: #ffffff;
+	--pale-pink-clr: #f78da7;
+	--vivid-red-clr: #cf2e2e;
+	--vivid-orange-clr: #ff6900;
+	--amber-clr: #fcb900;
+	--light-green-cyan-clr: #7bdcb5;
+	--vivid-green-cyan-clr: #00d084;
+	--light-blue-cyan-clr: #8ed1fc;
+	--vivid-blue-cyan-clr: #0693e3;
+	--vivid-purple-clr: #9b51e0;
+	--selection-clr: #f4c87c;
+	--fz-page-title: 1.85rem;
+	--fz-page-desc: .95rem;
+	--fz-nav-link: 1rem;
+	--fz-link-see-more: .85rem;
+	--fz-logo: 1.15rem;
+	--fz-sections-title: .95rem;
+	--fz-article-title: .90rem;
+	--fz-impact-text: 1.80rem;
+}
+body{
+    font-family: 'Rubik';
+}
+h1, h2, h3, h4, h5, h6, p, ul{
+    margin: 0;
+    padding: 0;
+}
+button{ cursor: pointer; }
+*::selection{
+	background-color: var(--amber-clr);
+}
+.sr-only{
+	position: absolute;
+	top: auto;
+	left: -100000px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+#app{
+	position: relative;
+	min-height: 100vh;
+}

@@ -1,0 +1,16 @@
+import { Link } from 'react-router-dom';
+
+import styles from './seemorelink.module.css';
+
+const SeeMoreLink = ({ reference, children}) => {
+  return (
+    <Link 
+      to='/'
+      className={styles['link']}
+    >
+      {children}
+    </Link>
+  );
+}
+
+export default SeeMoreLink;

@@ -1,0 +1,68 @@
+.last-destinations{
+    display: flex;
+    flex-direction: column;
+    padding: 2em 0 4em;
+}
+.last-destinations__title{
+    padding: 3em 0 2em;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: var(--fz-sections-title);
+    color: var(--light-black-clr);
+}
+.last-destinations__title::after{
+    content: '';
+    display: block;
+    width: 35%;
+    height: 2px;
+    margin: 1.75em auto 0;
+    background-color: var(--light-gray-clr);
+}
+.about-section{
+    padding: 3.5em 2em;
+    background-image: url(../../assets/images/discover-world.jpg);
+    background-size: cover;
+    background-position: center;
+    color: var(--white-clr);
+    text-shadow: 
+                1px -1px 3px var(--light-black-clr),
+                1px 2px 3px var(--light-black-clr);
+    text-transform: uppercase;
+}
+.about-section__title{
+    font-size: var(--fz-impact-text);
+    font-weight: 400;
+}
+.about-section__about-us .title{ letter-spacing: 4px; }
+.about-section__about-us .content{ padding: 1em 0 2em; }
+.about-section__about-us .link{
+    letter-spacing: 3px;
+    font-size: calc(var(--fz-nav-link) - 0.10em);
+    border-bottom: solid 2px transparent;
+    transition-property:  color, border-bottom;
+    transition-duration: .2s;
+    transition-timing-function: ease-in;
+}
+.about-section__about-us .link:focus{
+    color: var(--amber-clr);
+    border-bottom-color: var(--amber-clr);
+    outline: none;
+}
+@media (hover:hover) and (pointer:fine){
+    .about-section__about-us .link:hover{
+        color: var(--amber-clr);
+        border-bottom-color: var(--amber-clr);
+    }
+}
+@supports selector(:focus-visible){
+    .about-section__about-us .link:focus{
+        color: var(--light-black-clr);
+        border-bottom-color: transparent;
+    }
+    .about-section__about-us .link:focus-visible{
+        color: var(--amber-clr);
+        border-bottom-color: var(--amber-clr);
+    }
+}

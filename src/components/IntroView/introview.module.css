@@ -1,0 +1,21 @@
+.intro-view{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 90vh;
+	color: var(--white-clr);
+}
+.intro-view__title{
+	margin: 1em 0 .5em 0;
+	font-weight: 300;
+	font-size: var(--fz-page-title);
+	text-transform: uppercase;
+	text-align: center;
+}
+.intro-view__description{
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: var(--fz-page-desc);
+	text-align: center;
+}

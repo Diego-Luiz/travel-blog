@@ -1,0 +1,62 @@
+header{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    background-color: transparent;
+    color: var(--white-clr);
+    transition: background-color .5s ease-in-out;
+}
+header.--menu-active{ background-color: var(--white-clr); }
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+.logo{
+    font-size: var(--fz-logo);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.main-nav.--active{ color: var(--black-clr); }
+.nav-btn{
+    position: relative;
+    padding: .25em .5em;
+    background: none;
+    border: none;
+    color: currentColor;
+    outline: solid 2px transparent;
+}
+.main-nav__links{
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    box-sizing: border-box;
+    list-style: none;
+    background-color: var(--black-clr);
+    height: 0;
+    overflow: hidden;
+    transition-property: padding, height;
+    transition-timing-function: ease-in-out;
+    transition-duration: .6s;
+}
+.main-nav__links.--active{
+    height: 100vh;
+    padding: 2.5em 1em;
+    color: var(--white-clr);
+    overflow: auto;
+}
+.main-nav__links li:not(:first-child){ margin-top: .5em; }
+.link{
+    display: inline-block;
+    padding: .25em 0;
+    font-size: var(--fz-nav-link);
+    font-weight: 500;
+    text-transform: uppercase;
+}

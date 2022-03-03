@@ -1,0 +1,4 @@
+.slashed-title::before{
+    content: '\002F';
+    margin-right: .5ch;
+}
