@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 
+import styles from './footer.module.css';
+import SocialMedia from "../SocialMedia/SocialMedia";
 const Footer = () => {
   return (
-    <footer>
+    <footer className={styles['footer']}>
       Travellers Club &copy; 2022. All rights reserved.
-      <span>|</span>
+      <span className={styles['slash']}>|</span>
       <a href="https://www.google.com/">Visit the Github files about this website.</a>
+      <SocialMedia />
     </footer>
   );
 }

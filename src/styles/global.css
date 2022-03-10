@@ -28,6 +28,7 @@
 	--fz-sections-title: .95rem;
 	--fz-article-title: .90rem;
 	--fz-impact-text: 1.80rem;
+	--fz-article-date: .80rem;
 }
 body{
     font-family: 'Rubik';
@@ -51,4 +52,8 @@ button{ cursor: pointer; }
 #app{
 	position: relative;
 	min-height: 100vh;
+}
+.container{
+	max-width: 80%;
+    margin: 0 auto;
 }

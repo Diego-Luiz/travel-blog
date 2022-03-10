@@ -7,6 +7,9 @@ import SectionBackground from "./SectionBackground/SectionBackground";
 import ArticlesSection from './ArticlesSection/ArticlesSection';
 import SeeMoreLink from "./SeeMoreLink/SeeMoreLink";
 import SlashedTitle from "./SlashedTitle/SlashedTitle";
+import SectionDescription from "./SectionDescription/SectionDescription";
+import SectionContainer from './SectionContainer/SectionContainer';
+import ArticleWithDate from "./ArticleWithDate/ArticleWithDate";
 
 export {
   Layout, 
@@ -17,5 +20,8 @@ export {
   SectionBackground,
   ArticlesSection,
   SeeMoreLink,
-  SlashedTitle
+  SlashedTitle,
+  SectionDescription,
+  SectionContainer,
+  ArticleWithDate
 };

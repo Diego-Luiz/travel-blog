@@ -1,0 +1,10 @@
+.footer{
+    position: relative;
+    padding: 1em 1.5em;
+    background-color: var(--black-clr);
+    color: var(--white-clr);
+    font-size: inherit;
+}
+.slash{
+    margin: 0 .25em;
+}

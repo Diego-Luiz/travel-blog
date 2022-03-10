@@ -21,7 +21,6 @@
     background-color: var(--light-gray-clr);
 }
 .about-section{
-    padding: 3.5em 2em;
     background-image: url(../../assets/images/discover-world.jpg);
     background-size: cover;
     background-position: center;
@@ -49,6 +48,19 @@
     color: var(--amber-clr);
     border-bottom-color: var(--amber-clr);
     outline: none;
+}
+.articles__hightlights{
+    padding: 2.5em 0 1.5em;
+}
+.articles__no-hightlights{
+    margin: 4em 0 1em;
+}
+.tips-section{
+    background-color: #f1f1f1c7;
+}
+.tips-article{
+    display: flex;
+    flex-direction: column;
 }
 @media (hover:hover) and (pointer:fine){
     .about-section__about-us .link:hover{

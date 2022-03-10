@@ -1,3 +1,10 @@
+.slashed-title{
+    font-weight: 500;
+    font-size: var(--fz-link-see-more);
+    text-transform: uppercase;
+    color: var(--light-black-clr);
+    letter-spacing: .15em;
+}
 .slashed-title::before{
     content: '\002F';
     margin-right: .5ch;

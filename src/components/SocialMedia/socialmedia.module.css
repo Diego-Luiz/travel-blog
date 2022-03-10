@@ -1,0 +1,12 @@
+.list{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: .5em;
+    list-style: none;
+    font-size: var(--fz-logo);
+}
+.list__link{
+    display: inline-block;
+    padding: .5em;
+}
