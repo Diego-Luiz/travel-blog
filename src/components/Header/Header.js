@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { RiMenuFill } from 'react-icons/ri';
 
 import styles from './header.module.css';
-import { SocialMedia } from '..';
+import MainNavLink from '../MainNavLink/MainNavLink';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import MenuHamburguer from '../MenuHamburguer/MenuHamburguer';
 
 class Header extends React.Component{
   constructor(props){
@@ -17,7 +18,7 @@ class Header extends React.Component{
 
   toggleMenu(){
     this.setState(state => { 
-      state.toggleMenu ? this.menuActive = '' : this.menuActive = '--active';
+      state.toggleMenu ? this.menuActive = '--closed' : this.menuActive = '--active';
       return ({ toggleMenu: !state.toggleMenu });
     });
   }
@@ -37,23 +38,23 @@ class Header extends React.Component{
             aria-expanded={this.state.toggleMenu}
           >
             <span className='sr-only'>Toggle menu</span>
-            <RiMenuFill />
+            <MenuHamburguer menuStatus={this.menuActive}/>
           </button>
           <ul 
             className={[styles['main-nav__links'], styles[`${this.menuActive}`] ].join(' ')}
             id={styles['main-nav__links']}
           >
             <li>
-              <Link to='/' className={styles['link']}>Destinations</Link>
+              <DropdownMenu buttonLabel='Destinations'/>
             </li>
             <li>
-              <Link to='/' className={styles['link']}>Tips</Link>
+              <MainNavLink path='/' label='Tips'/>
             </li>
             <li>
-              <Link to='/' className={styles['link']}>Photo and Video</Link>
+              <MainNavLink path='/' label='Photos and Video'/>
             </li>
             <li>
-              <Link to='/' className={styles['link']}>About us</Link>
+              <MainNavLink path='/' label='About us'/>
             </li>
           </ul>
         </nav>  

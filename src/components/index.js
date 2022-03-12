@@ -10,6 +10,9 @@ import SlashedTitle from "./SlashedTitle/SlashedTitle";
 import SectionDescription from "./SectionDescription/SectionDescription";
 import SectionContainer from './SectionContainer/SectionContainer';
 import ArticleWithDate from "./ArticleWithDate/ArticleWithDate";
+import DropdownMenu from "./DropdownMenu/DropdownMenu";
+import MainNavLink from "./MainNavLink/MainNavLink";
+import MenuHamburguer from "./MenuHamburguer/MenuHamburguer";
 
 export {
   Layout, 
@@ -23,5 +26,8 @@ export {
   SlashedTitle,
   SectionDescription,
   SectionContainer,
-  ArticleWithDate
+  ArticleWithDate,
+  DropdownMenu,
+  MainNavLink,
+  MenuHamburguer
 };

@@ -1,0 +1,33 @@
+.dropdown{
+    position: relative;
+}
+.dropdown__btn{
+    position: relative;
+    border: none;
+    background: inherit;
+    color: currentColor;
+    padding: .25em 1em;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.dropdown__btn::after{
+    content: '\203A';
+    display: inline-block;
+    margin-left: .45em;
+    transform: rotate(90deg);
+    transition: transform .25s ease-in;
+}
+.dropdown__btn[aria-expanded='true']::after{ transform: rotate(270deg); }
+.dropdown__content{
+    list-style: none;
+    text-align: center;
+    padding-top: .25em;
+    max-height: 0px;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: max-height .5s ease-in-out;
+}
+.dropdown__content.--active{
+    max-height: 100vh;
+}
+.dropdown__content a{ font-size: calc(var(--fz-nav-link) - .08rem); }
