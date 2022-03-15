@@ -19,15 +19,22 @@ a{
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+.logo a{ transition: color .2s ease-in; }
+header.--menu-active .logo a{ color: var(--black-clr) };
+.logo a:focus{ color: var(--amber-clr); }
 .main-nav.--active{ color: var(--black-clr); }
 .nav-btn{
     position: relative;
-    padding: .25em .5em;
+    padding: .5em;
     background: none;
     border: none;
     color: currentColor;
-    outline: solid 2px transparent;
+    outline: ridge 2px transparent;
+    transition-property: outline-color, transform;
+    transition-duration: .2s;
+    transition-timing-function: ease-in;
 }
+.nav-btn:focus{ outline-color: currentColor; }
 .main-nav__links{
     position: absolute;
     top: 100%;
@@ -53,3 +60,16 @@ a{
     overflow: auto;
 }
 .main-nav__links li:not(:first-child){ margin-top: .5em; }
+@supports selector(:focus-visible){
+    .logo a:focus{ color: currentColor; }
+    .logo a:focus-visible{ 
+        outline: none;
+        color: var(--amber-clr); 
+    }
+    .nav-btn:focus{ outline-color: transparent; }
+    .nav-btn:focus-visible{ outline: ridge 2px currentColor; }
+}
+@media (hover:hover) and (pointer:fine){
+    .nav-btn:hover{ transform: scale(1.2); }
+    .logo a:hover{ color: var(--amber-clr); }
+}

@@ -1,13 +1,58 @@
-.article.--no-hightlight a{ display: flex; }
-.article:not(:last-child){ margin-bottom: 2em; }
+.link:not(:last-child){ 
+    display: inline-block;
+    margin-bottom: 2em; 
+}
+.article.--no-hightlight{ 
+    display: grid;
+    grid-template-columns: 20% 1fr;
+}
+.img-box{ 
+    position: relative; 
+    overflow: hidden;
+    display: inline-block;
+    height: max-content;
+    box-sizing: border-box;
+}
+.img-box::before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0, .3);
+}
+.img-box::after{
+    content: '\203A';
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    bottom: -50%;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: max-content;
+    height: max-content;
+    font-size: 3rem;
+    color: var(--white-clr);
+}
+.img-box::before,
+.img-box::after{
+    opacity: 0;
+    transition: opacity .4s ease-in-out;
+}
 .article__img{
+    display: block;
     max-width: 100%;
     min-height: 350px;
     object-fit: cover;
+    transform: scale(1);
+    transition: all .4s ease-in-out;
 }
 .article.--no-hightlight .article__img{
     min-height: initial;
-    width: 60px;
     height: 60px;
 }
 .article__date{
@@ -17,7 +62,46 @@
 .article__title{
     font-size: var(--fz-sections-title);
     font-weight: 450;
+    transition: color .4s ease-in-out;
 }
-.content-wrapper{
-    padding-left: .75em;
+.content-wrapper{ padding-left: .75em; }
+
+.link:focus .img-box::before,
+.link:focus .img-box::after{
+    opacity: 1;
+}
+.link:focus .article__img{
+    transform: scale(1.05);
+}
+.link:focus .article__title{ color: var(--amber-clr); }
+
+@supports selector(:focus-visible){
+    .link:focus .img-box::before,
+    .link:focus .img-box::after{
+        opacity: 0;
+    }
+    .link:focus .article__img{
+        transform: none;
+    }
+    .link:focus .article__title{ color: initial; }
+    .link:focus-visible{ outline: none; }
+    .link:focus-visible .img-box::before,
+    .link:focus-visible .img-box::after{
+        opacity: 1;
+    }
+    .link:focus-visible .article__img{
+        transform: scale(1.05);
+    }
+    .link:focus-visible .article__title{ color: var(--amber-clr); }
+
+}
+@media (hover:hover) and (pointer:fine){
+    .link:hover .img-box::before,
+    .link:hover .img-box::after{
+        opacity: 1;
+    }
+    .link:hover .article__img{
+        transform: scale(1.05);
+    }
+    .link:hover .article__title{ color: var(--amber-clr); }
 }

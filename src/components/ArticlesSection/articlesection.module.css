@@ -4,8 +4,57 @@
     align-items: center;
     padding: 2em 1.5em;
 }
+.link{
+    position: relative;
+}
 .article:not(:first-child){ margin-top: 1em; }
-.article__img{ max-width: 100%; }
+.box-img{
+    position: relative;
+    color: var(--white-clr);
+}
+.box-img::before{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,.3) 60%, black);
+}
+.box-img::after{
+    content: '\203A';
+    display: inline-block;
+    height: max-content;
+    width: max-content;
+    position: absolute;
+    top: 50%;
+    bottom: -50%;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+}
+.box-img [role='presentation']{
+    position: absolute;
+    top: 75%;
+    right: 5%;
+    z-index: 2;
+    text-transform: uppercase;
+}
+.box-img::before,
+.box-img::after,
+.box-img [role='presentation']{
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+}
+.box-img:focus::before,
+.box-img:focus::after,
+.box-img:focus [role='presentation']{
+    opacity: 1;
+}
+.article__img{ 
+    display: block;
+    max-width: 100%; 
+}
 .article__title{
     padding: 1em 0;
     font-size: var(--fz-article-title);
@@ -13,4 +62,29 @@
     text-transform: uppercase;
     word-spacing: 2px;
     color: var(--light-black-clr);
+    transition: color .2s ease-in;
+}
+.article__title:focus{ color: var(--amber-clr); }
+
+@supports selector(:focus-visible){
+    .box-img:focus::before,
+    .box-img:focus::after,
+    .box-img:focus [role='presentation']{
+        opacity: 0;
+    }
+    .box-img:focus-visible::before,
+    .box-img:focus-visible::after,
+    .box-img:focus-visible [role='presentation']{
+        opacity: 1;
+    }
+    .article__title:focus{ color: var(--light-black-clr); }
+    .article__title:focus-visible{ color: var(--amber-clr); }
+}
+@media (hover:hover) and (pointer:fine){
+    .box-img:hover::before,
+    .box-img:hover::after,
+    .box-img:hover [role='presentation']{
+        opacity: 1;
+    }
+    .article__title:hover{ color: var(--amber-clr); }
 }

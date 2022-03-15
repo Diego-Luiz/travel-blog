@@ -8,3 +8,18 @@
 .slash{
     margin: 0 .25em;
 }
+.gitword{ 
+    text-decoration: underline;
+    transition: color .2s ease-in; 
+}
+.gitword:focus{ color: var(--amber-clr); }
+@supports selector(:focus-visible){
+    .gitword:focus{ color: currentColor; }
+    .gitword:focus-visible{ 
+        outline: none;
+        color: var(--amber-clr); 
+    }
+}
+@media (hover:hover) and (pointer:fine){
+    .gitword:hover{ color: var(--amber-clr); }
+}
