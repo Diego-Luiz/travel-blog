@@ -7,7 +7,7 @@ header{
     padding: 1em;
     background-color: transparent;
     color: var(--white-clr);
-    transition: background-color .5s ease-in-out;
+    transition: background .5s ease-in-out;
 }
 header.--menu-active{ background-color: var(--white-clr); }
 a{
@@ -72,4 +72,24 @@ header.--menu-active .logo a{ color: var(--black-clr) };
 @media (hover:hover) and (pointer:fine){
     .nav-btn:hover{ transform: scale(1.2); }
     .logo a:hover{ color: var(--amber-clr); }
+}
+@media screen and (min-width: 992px){
+    header{ 
+        padding: 1.5em; 
+        background: linear-gradient(rgba(0,0,0, .5) 60%, transparent);
+    }
+    .main-nav{ display: flex; }
+    .main-nav__links{
+        position: static;
+        height: auto;
+        flex-direction: row;
+        background-color: transparent;
+    }
+    .main-nav__links li{ margin: 0 .5em !important; }
+    .nav-btn{ display: none; }
+}
+@media screen and (min-width: 1400px){
+    header{ 
+        padding: 2em; 
+    }
 }

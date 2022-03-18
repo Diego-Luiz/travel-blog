@@ -23,3 +23,16 @@
 @media (hover:hover) and (pointer:fine){
     .gitword:hover{ color: var(--amber-clr); }
 }
+@media screen and (min-width: 768px){
+    .footer{
+        display: grid;
+        grid-template-columns: 40% 40%;
+        place-items: center;
+        place-content: center;
+    }
+}
+@media screen and (min-width: 1200px){
+    .footer{
+        padding: 2em 6em;
+    }
+}

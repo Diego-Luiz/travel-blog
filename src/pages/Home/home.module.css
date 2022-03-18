@@ -1,9 +1,11 @@
-.last-destinations{
+.last-destinations > div{
     display: flex;
     flex-direction: column;
-    padding: 2em 0 4em;
 }
 .last-destinations__title{
+    display: inline-block;
+    max-width: max-content;
+    margin: 0 auto;
     padding: 3em 0 2em;
     letter-spacing: 1px;
     text-align: center;
@@ -15,7 +17,7 @@
 .last-destinations__title::after{
     content: '';
     display: block;
-    width: 35%;
+    width: 60%;
     height: 2px;
     margin: 1.75em auto 0;
     background-color: var(--light-gray-clr);
@@ -49,15 +51,13 @@
     border-bottom-color: var(--amber-clr);
     outline: none;
 }
-.articles__hightlights{
-    padding: 2.5em 0 1.5em;
-}
-.articles__no-hightlights{
-    margin: 4em 0 1em;
-}
+.photo-video-section,
 .tips-section{
-    background-color: #f1f1f1c7;
+    padding-top: 3em;
 }
+.articles__hightlights{ padding: 2.5em 0 1.5em; }
+.articles__no-hightlights{ margin: 4em 0 1em; }
+.tips-section{ background-color: #f1f1f1c7; }
 .tips-article{
     display: flex;
     flex-direction: column;
@@ -77,4 +77,61 @@
         color: var(--amber-clr);
         border-bottom-color: var(--amber-clr);
     }
+}
+@media screen and (min-width: 576px){
+    .articles__hightlights{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.5em;
+    }
+    .articles__no-hightlights{
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+}
+@media screen and (min-width: 768px){
+    .about-section > div{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2em;
+    }
+}
+@media screen and (min-width: 992px){
+    .about-section__about-us .content{
+        line-height: 1.75;
+        font-weight: 500;
+    }
+}
+@media screen and (min-width: 1110px){
+    .photo-video-section > div{
+        display: flex;
+        flex-direction: column;
+    }
+    .photo-video-section,
+    .tips-section{
+        padding-top: 0;
+    }
+    .articles{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 4em;
+        margin-top: 2.5em;
+    }
+    .articles__hightlights{ padding: 0; }
+    .articles__no-hightlights{
+        grid-auto-rows: min-content;
+        row-gap: 1.5em;
+        margin: 0;
+    }
+}
+@media screen and (min-width: 1200px){
+    .about-section{ padding: 2em 0; }
+    .about-section__about-us{
+        padding: 2em 0;
+        max-height: 100%;
+        box-sizing: border-box;
+    }
+}
+@media screen and (min-width: 1400px){
+    .about-section{ padding: 5em 0; }
 }

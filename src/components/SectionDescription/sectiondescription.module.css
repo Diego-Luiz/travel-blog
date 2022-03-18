@@ -3,3 +3,9 @@
     line-height: 1.5;
     padding: 1em 0;
 }
+
+@media screen and (min-width: 1110px){
+    .section-description{
+        max-width: 45%;
+    }
+}

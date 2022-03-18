@@ -13,7 +13,7 @@ import ArticleWithDate from "./ArticleWithDate/ArticleWithDate";
 import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import MainNavLink from "./MainNavLink/MainNavLink";
 import MenuHamburguer from "./MenuHamburguer/MenuHamburguer";
-
+import BtnScrollTop  from "./BtnScrollTop/BtnScrollTop";
 export {
   Layout, 
   Header, 
@@ -29,5 +29,6 @@ export {
   ArticleWithDate,
   DropdownMenu,
   MainNavLink,
-  MenuHamburguer
+  MenuHamburguer,
+  BtnScrollTop
 };

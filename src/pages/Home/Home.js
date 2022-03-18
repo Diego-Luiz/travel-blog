@@ -17,7 +17,7 @@ import mountainImg from '../../assets/images/mountain-img.jpg';
 import hotelImg from '../../assets/images/hotel-img.jpg';
 import instagramArticleImg from '../../assets/images/lightravel-instagram.jpg';
 
-const Home = () => {
+const Home = ({ headerHeight }) => {
   const LastDestinationsArticles = [
     {
       id: 1,
@@ -50,14 +50,19 @@ const Home = () => {
       <IntroView 
         title={'Welcome to the Club'}
         description={'Destinations and Tips, Photos and Videos'} 
+        height={`calc(100vh - ${headerHeight}px)`}
       />
       <section className={styles['last-destinations']}>
-        <h3 className={styles['last-destinations__title']}>Last destinations</h3>
-        <ArticlesSection articles={LastDestinationsArticles}/>
-        <SeeMoreLink reference='/'>See more</SeeMoreLink>
+        <SectionContainer>
+          <h3 className={styles['last-destinations__title']}>Last destinations</h3>
+          <ArticlesSection articles={LastDestinationsArticles}/>
+          <SeeMoreLink reference='/'>See more</SeeMoreLink>
+        </SectionContainer>
       </section>
       <section className={styles['about-section']}>
-        <SectionContainer>
+        <SectionContainer
+          autoHeight={true}
+        >
           <h3 className={styles['about-section__title']}>There is a big world to discover. Come explore with us!</h3>
           <div className={styles['about-section__about-us']}>
             <h4 className={styles['title']}>About us</h4>
@@ -131,7 +136,6 @@ const Home = () => {
             <ArticlesSection articles={LastDestinationsArticles}/>
             <SeeMoreLink  reference='/'>See more</SeeMoreLink>
           </div>
-
         </SectionContainer>
       </section>
     </>

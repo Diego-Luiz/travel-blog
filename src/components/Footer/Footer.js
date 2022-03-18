@@ -5,9 +5,11 @@ import SocialMedia from "../SocialMedia/SocialMedia";
 const Footer = () => {
   return (
     <footer className={styles['footer']}>
-      Travellers Club &copy; 2022. All rights reserved.
-      <span className={styles['slash']}>|</span>
-      <a href="https://www.google.com/" className={styles['gitword']}>Visit the Github files about this website.</a>
+      <div>
+        Travellers Club &copy; 2022. All rights reserved.
+        <span className={styles['slash']}>|</span>
+        <a href="https://www.google.com/" className={styles['gitword']}>Visit the Github files about this website.</a>
+      </div>
       <SocialMedia />
     </footer>
   );

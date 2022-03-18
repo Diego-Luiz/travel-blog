@@ -1,5 +1,18 @@
 .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 78%;
     margin: 0 auto;
-    padding: 2.5em 0 4em;
+    padding: 0 0 4em;
+    box-sizing: border-box;
+}
+.container:not(.--auto-min-height){
+    min-height: 100vh;
+}
+@media screen and (min-width: 576px) {
+    .container{ width: 90%; }
+}
+@media screen and (min-width: 1400px) {
+    .container{ width: 70%; }
 }

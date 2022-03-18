@@ -2,12 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2em 1.5em;
+    padding: 2em 1em;
 }
 .link{
     position: relative;
 }
-.article:not(:first-child){ margin-top: 1em; }
+.link:not(:first-child){ margin-top: 1em; }
 .box-img{
     position: relative;
     color: var(--white-clr);
@@ -35,7 +35,7 @@
 }
 .box-img [role='presentation']{
     position: absolute;
-    top: 75%;
+    bottom: 5%;
     right: 5%;
     z-index: 2;
     text-transform: uppercase;
@@ -46,9 +46,10 @@
     opacity: 0;
     transition: opacity .5s ease-in-out;
 }
-.box-img:focus::before,
-.box-img:focus::after,
-.box-img:focus [role='presentation']{
+.link:focus{ outline: none; }
+.link:focus .box-img::before,
+.link:focus .box-img::after,
+.link:focus .box-img [role='presentation']{
     opacity: 1;
 }
 .article__img{ 
@@ -67,24 +68,36 @@
 .article__title:focus{ color: var(--amber-clr); }
 
 @supports selector(:focus-visible){
-    .box-img:focus::before,
-    .box-img:focus::after,
-    .box-img:focus [role='presentation']{
+    .link:focus .box-img::before,
+    .link:focus .box-img::after,
+    .link:focus .box-img [role='presentation']{
         opacity: 0;
     }
-    .box-img:focus-visible::before,
-    .box-img:focus-visible::after,
-    .box-img:focus-visible [role='presentation']{
+    .link:focus-visible{ outline: none; }
+    .link:focus-visible .box-img::before,
+    .link:focus-visible .box-img::after,
+    .link:focus-visible .box-img [role='presentation']{
         opacity: 1;
     }
-    .article__title:focus{ color: var(--light-black-clr); }
-    .article__title:focus-visible{ color: var(--amber-clr); }
+    .link:focus .article__title{ color: var(--light-black-clr); }
+    .link:focus-visible .article__title{ color: var(--amber-clr); }
 }
 @media (hover:hover) and (pointer:fine){
-    .box-img:hover::before,
-    .box-img:hover::after,
-    .box-img:hover [role='presentation']{
+    .link:hover .box-img::before,
+    .link:hover .box-img::after,
+    .link:hover .box-img [role='presentation']{
         opacity: 1;
     }
-    .article__title:hover{ color: var(--amber-clr); }
+    .link:hover .article__title{ color: var(--amber-clr); }
+}
+@media screen and (min-width: 1110px){
+    .section{
+        flex-direction: row;
+    }
+    .link:not(:first-child){ margin: 0 0 0 1em !important; }
+    .article__img{
+        min-height: 500px;
+        object-fit: cover;
+        object-position: center;
+    }
 }

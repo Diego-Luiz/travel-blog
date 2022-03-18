@@ -20,6 +20,7 @@
 	--vivid-blue-cyan-clr: #0693e3;
 	--vivid-purple-clr: #9b51e0;
 	--selection-clr: #f4c87c;
+	
 	--fz-page-title: 1.85rem;
 	--fz-page-desc: .95rem;
 	--fz-nav-link: 1rem;
@@ -56,4 +57,28 @@ button{ cursor: pointer; }
 .container{
 	max-width: 80%;
     margin: 0 auto;
+}
+@media screen and (min-width: 576px){
+	:root{
+		--fz-nav-link: 1.15rem;
+		--fz-logo: 1.20rem;
+	}
+}
+@media screen and (min-width: 768px){
+	:root{
+		--fz-page-title: 2.05rem;
+	}
+}
+@media screen and (min-width: 992px){
+	:root{
+		--fz-page-title: 3rem;
+		--fz-page-desc: 1.15rem;
+		--fz-nav-link: .95rem;
+		--fz-impact-text: 3rem;
+	}
+}
+@media screen and (min-width: 1200px){
+	:root{
+		--fz-impact-text: 3.25rem;
+	}
 }

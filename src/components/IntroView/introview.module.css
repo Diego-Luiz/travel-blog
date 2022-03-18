@@ -3,7 +3,6 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	min-height: 90vh;
 	color: var(--white-clr);
 }
 .intro-view__title{

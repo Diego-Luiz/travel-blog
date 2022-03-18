@@ -105,3 +105,20 @@
     }
     .link:hover .article__title{ color: var(--amber-clr); }
 }
+@media screen and (min-width: 768px){
+    .article__img{
+        min-height: 500px;
+    }
+}
+@media screen and (min-width: 1110px){
+    .link{
+        height: max-content;
+        margin: 0 !important;
+    }
+    .article__img{ min-height: 350px; }
+    .article.--no-hightlight .article__img{ height: 50px; }
+}
+@media screen and (min-width: 1400px){
+    .article__img{ min-height: 425px; }
+    .article.--no-hightlight .article__img{ height: 54px; }
+}

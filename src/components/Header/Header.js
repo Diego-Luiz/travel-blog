@@ -6,6 +6,7 @@ import MainNavLink from '../MainNavLink/MainNavLink';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import MenuHamburguer from '../MenuHamburguer/MenuHamburguer';
 
+
 class Header extends React.Component{
   constructor(props){
     super(props);
@@ -15,7 +16,6 @@ class Header extends React.Component{
     this.menuActive = '';
     this.toggleMenu = this.toggleMenu.bind(this);
   }
-
   toggleMenu(){
     this.setState(state => { 
       state.toggleMenu ? this.menuActive = '--closed' : this.menuActive = '--active';
@@ -24,7 +24,10 @@ class Header extends React.Component{
   }
   render(){
     return (
-      <header className={styles[`${this.state.toggleMenu ? '--menu-active' : ''}`]}>
+      <header 
+        className={styles[`${this.state.toggleMenu ? '--menu-active' : ''}`]}
+        ref={this.props.innerRef}
+      >
         <h1 className={styles['logo']}>
           <Link to='/'>
             Travellers Club
@@ -61,7 +64,6 @@ class Header extends React.Component{
       </header>
     );
   }
-    
 }
 
-export default Header;
+export default React.forwardRef((props, ref) => <Header {...props} innerRef={ref} /> );
