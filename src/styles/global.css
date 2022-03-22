@@ -31,9 +31,8 @@
 	--fz-impact-text: 1.80rem;
 	--fz-article-date: .80rem;
 }
-body{
-    font-family: 'Rubik';
-}
+body{ font-family: 'Rubik'; }
+body.--no-overflow{ overflow: hidden; }
 h1, h2, h3, h4, h5, h6, p, ul{
     margin: 0;
     padding: 0;

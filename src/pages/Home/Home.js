@@ -17,7 +17,7 @@ import mountainImg from '../../assets/images/mountain-img.jpg';
 import hotelImg from '../../assets/images/hotel-img.jpg';
 import instagramArticleImg from '../../assets/images/lightravel-instagram.jpg';
 
-const Home = ({ headerHeight }) => {
+const Home = ({ headerHeight }, ref) => {
   const LastDestinationsArticles = [
     {
       id: 1,
@@ -50,9 +50,9 @@ const Home = ({ headerHeight }) => {
       <IntroView 
         title={'Welcome to the Club'}
         description={'Destinations and Tips, Photos and Videos'} 
-        height={`calc(100vh - ${headerHeight}px)`}
+        height={headerHeight}
       />
-      <section className={styles['last-destinations']}>
+      <section className={styles['last-destinations']} ref={ref}>
         <SectionContainer>
           <h3 className={styles['last-destinations__title']}>Last destinations</h3>
           <ArticlesSection articles={LastDestinationsArticles}/>
@@ -142,4 +142,4 @@ const Home = ({ headerHeight }) => {
   );
 }
 
-export default Home;
+export default React.forwardRef(Home);

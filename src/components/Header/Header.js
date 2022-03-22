@@ -11,21 +11,35 @@ class Header extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      toggleMenu: false
+      prevScrollPosition: window.pageYOffset,
+      hidden: false
     };
-    this.menuActive = '';
-    this.toggleMenu = this.toggleMenu.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
   }
-  toggleMenu(){
-    this.setState(state => { 
-      state.toggleMenu ? this.menuActive = '--closed' : this.menuActive = '--active';
-      return ({ toggleMenu: !state.toggleMenu });
+  componentDidMount(){
+    window.addEventListener('scroll', this.handleScroll);
+  }
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+  handleScroll(){
+    const { prevScrollPosition } = this.state;
+    const currentScrollPosition = window.pageYOffset;
+    const shouldBeVisible = currentScrollPosition < prevScrollPosition;
+    this.setState({
+      prevScrollPosition: currentScrollPosition,
+      hidden: !shouldBeVisible
     });
   }
   render(){
     return (
       <header 
-        className={styles[`${this.state.toggleMenu ? '--menu-active' : ''}`]}
+        className={
+          [ styles[`${this.props.toggleMenu ? '--menu-active' : ''}`], 
+            styles[`${this.state.hidden ? '--hidden': ''}`], 
+            styles[`${this.props.firstSectionIntersected ? '--fstSectionIntersected': ''}`]
+          ].join(' ')
+        }
         ref={this.props.innerRef}
       >
         <h1 className={styles['logo']}>
@@ -33,19 +47,29 @@ class Header extends React.Component{
             Travellers Club
           </Link>
         </h1> 
-        <nav className={[styles['main-nav'], styles[`${this.menuActive}`]].join(' ')}>
+        <nav className={[styles['main-nav'], styles[`${this.props.toggleMenu ? '--active': ''}`]].join(' ')}>
           <button 
             className={styles['nav-btn']}
-            onClick={this.toggleMenu}
+            onClick={this.props.handleToggleMenu}
             aria-controls={styles['main-nav__links']}
-            aria-expanded={this.state.toggleMenu}
+            aria-expanded={this.props.toggleMenu}
           >
             <span className='sr-only'>Toggle menu</span>
-            <MenuHamburguer menuStatus={this.menuActive}/>
+            <MenuHamburguer 
+              menuStatus={this.props.toggleMenu ? '--active': '--closed'} 
+              firstSectionIntersected={this.props.firstSectionIntersected}
+            />
           </button>
           <ul 
-            className={[styles['main-nav__links'], styles[`${this.menuActive}`] ].join(' ')}
+            className={
+              [ styles['main-nav__links'], 
+                styles[`${this.props.toggleMenu ? '--active': ''}`]
+              ].join(' ')
+            }
             id={styles['main-nav__links']}
+            style={
+              this.props.toggleMenu ? {height: `calc(100vh - ${this.props.headerHeight}px)`} : null
+            }
           >
             <li>
               <DropdownMenu buttonLabel='Destinations'/>

@@ -11,7 +11,10 @@
     border-radius: 15px;
     box-sizing: border-box;
 }
-.box.--active .bar{ background-color: var(--black-clr); }
+.box.--active .bar,
+.box.--fstSectionIntersected .bar{ 
+    background-color: var(--black-clr); 
+}
 .bar:nth-child(1){ 
     --translate: calc(100% + var(--margin));
     --rotate: 45deg;

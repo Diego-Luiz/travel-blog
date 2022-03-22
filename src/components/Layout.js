@@ -7,13 +7,22 @@ import {
   BtnScrollTop 
 } from '.';
 
-const Layout = React.forwardRef((props, ref) => (
+const Layout = ({ firstSectionIntersected, handleToggleMenu, toggleMenu, headerHeight }, ref) => (
   <>
-    <Header ref={ref} />
-    <BtnScrollTop />
+    <Header 
+      firstSectionIntersected={firstSectionIntersected} 
+      handleToggleMenu={handleToggleMenu}
+      toggleMenu={toggleMenu}
+      headerHeight={headerHeight}
+      ref={ref}   
+    />
+    <BtnScrollTop 
+      firstSectionIntersected={firstSectionIntersected}
+      toggleMenu={toggleMenu}
+    />
     <Outlet />
     <Footer />
   </>
-));
+);
 
-export default Layout;
+export default React.forwardRef(Layout);

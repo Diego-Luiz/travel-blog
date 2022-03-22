@@ -32,6 +32,7 @@
                 1px 2px 3px var(--light-black-clr);
     text-transform: uppercase;
 }
+.about-section > div{ padding-top: 4em; }
 .about-section__title{
     font-size: var(--fz-impact-text);
     font-weight: 400;
@@ -107,10 +108,7 @@
         display: flex;
         flex-direction: column;
     }
-    .photo-video-section,
-    .tips-section{
-        padding-top: 0;
-    }
+    
     .articles{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -134,4 +132,8 @@
 }
 @media screen and (min-width: 1400px){
     .about-section{ padding: 5em 0; }
+    .photo-video-section,
+    .tips-section{
+        padding-top: 0;
+    }
 }
