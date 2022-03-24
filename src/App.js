@@ -6,8 +6,12 @@ import {
 
 import './styles/normalize.css';
 import './styles/global.css';
-import { Home } from './pages';
+import { 
+  Home, 
+  Tips 
+} from './pages';
 import { Layout } from './components';
+import appWithUseLocationHOC from './hocs/appWithUseLocationHOC';
 
 class App extends React.Component{
   constructor(props){
@@ -21,24 +25,40 @@ class App extends React.Component{
     };
     this.headerResizeOb = null;
     this.firstSectionIntersOb = null;
+    this.firstSectionObShouldBeInitialized = true;
     this.firstIntersObOptions = {
       threshold: 0.2
     };
     this.handleFirstSectionIntersection = this.handleFirstSectionIntersection.bind(this);
     this.handleToggleMenu = this.handleToggleMenu.bind(this);
+    this.handleFirstIntersObAssignment = this.handleFirstIntersObAssignment.bind(this);
   }
   componentDidMount(){
     this.headerResizeOb = new ResizeObserver((entries) => {
       const height = entries[0].target.clientHeight;
       if(height !== this.state.headerHeight) this.setState({ headerHeight: height });
     });
-    this.headerResizeOb.observe(this.headerRef.current);
     this.firstSectionIntersOb = new IntersectionObserver(this.handleFirstSectionIntersection, this.firstIntersObOptions);
-    this.firstSectionIntersOb.observe(this.firstSectionRef.current);
+    if(this.headerRef.current) this.headerResizeOb.observe(this.headerRef.current);
+    this.handleFirstIntersObAssignment();
+  }
+  componentDidUpdate(){
+    this.handleFirstIntersObAssignment();
   }
   componentWillUnmount(){ 
-    this.headerResizeOb.unobserve(this.headerRef.current); 
-    this.firstSectionIntersOb.unobserve(this.firstSectionRef.current);
+    if(this.headerRef.current) this.headerResizeOb.unobserve(this.headerRef.current); 
+    if(this.firstSectionRef.current) this.firstSectionIntersOb.unobserve(this.firstSectionRef.current);
+  }
+  handleFirstIntersObAssignment(){
+    if(this.firstSectionRef.current && this.firstSectionObShouldBeInitialized){
+      this.firstSectionIntersOb.observe(this.firstSectionRef.current);
+      this.firstSectionObShouldBeInitialized = false;
+    }
+    else if(this.firstSectionRef.current === null){
+      this.firstSectionIntersOb.disconnect();
+      if(this.state.firstSectionIntersected) this.setState({ firstSectionIntersected: false });
+      this.firstSectionObShouldBeInitialized = true;
+    }
   }
   handleFirstSectionIntersection([entry]){
     if(entry.isIntersecting){
@@ -73,11 +93,14 @@ class App extends React.Component{
             headerHeight={this.state.headerHeight} 
             ref={this.firstSectionRef}
           />} />
-          <Route path='*' element={<h1>Page not found. </h1>} />
+          <Route path='tips' element={<Tips 
+            headerHeight={this.state.headerHeight}
+            ref={this.firstSectionRef}
+          />} />
+          <Route path='*' element={<h1>Page not found.</h1>} />
         </Route>
       </Routes>
     );
   }
 }
-
-export default App;
+export default appWithUseLocationHOC(App);

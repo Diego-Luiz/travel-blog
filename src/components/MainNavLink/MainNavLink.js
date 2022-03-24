@@ -4,7 +4,12 @@ import styles from './mainnavlink.module.css';
 
 const MainNavLink = ({ label, path }) => {
   return (
-    <Link to={path} className={styles['link']}>{label}</Link>
+    <Link 
+      to={path} 
+      className={styles['link']}
+    >
+      {label}
+    </Link>
   );
 }
 

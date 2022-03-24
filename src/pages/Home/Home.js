@@ -134,7 +134,7 @@ const Home = ({ headerHeight }, ref) => {
           </div>
           <div className={styles['tips-article']}>
             <ArticlesSection articles={LastDestinationsArticles}/>
-            <SeeMoreLink  reference='/'>See more</SeeMoreLink>
+            <SeeMoreLink  reference='/tips'>See more</SeeMoreLink>
           </div>
         </SectionContainer>
       </section>

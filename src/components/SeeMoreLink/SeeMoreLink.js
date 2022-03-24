@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 
 import styles from './seemorelink.module.css';
 
-const SeeMoreLink = ({ reference, children}) => {
+const SeeMoreLink = ({ reference, children }) => {
   return (
     <Link 
-      to='/'
+      to={reference}
       className={styles['link']}
     >
       {children}

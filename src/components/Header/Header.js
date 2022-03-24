@@ -72,16 +72,16 @@ class Header extends React.Component{
             }
           >
             <li>
-              <DropdownMenu buttonLabel='Destinations'/>
+              <DropdownMenu buttonLabel='Destinations' />
             </li>
             <li>
-              <MainNavLink path='/' label='Tips'/>
+              <MainNavLink path='/tips' label='Tips' />
             </li>
             <li>
-              <MainNavLink path='/' label='Photos and Video'/>
+              <MainNavLink path='/' label='Photos and Video' />
             </li>
             <li>
-              <MainNavLink path='/' label='About us'/>
+              <MainNavLink path='/' label='About us' />
             </li>
           </ul>
         </nav>  
