@@ -19,6 +19,9 @@ class Header extends React.Component{
   componentDidMount(){
     window.addEventListener('scroll', this.handleScroll);
   }
+  componentDidUpdate(){
+    if(this.props.toggleMenu && this.state.hidden) this.setState({ hidden: false });
+  }
   componentWillUnmount(){
     window.removeEventListener('scroll', this.handleScroll);
   }

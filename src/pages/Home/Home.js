@@ -78,7 +78,7 @@ const Home = ({ headerHeight }, ref) => {
       </section>
       <section className={styles['photo-video-section']}>
         <SectionContainer>
-          <SlashedTitle titleLevel='h3'>Travel Video & Photo</SlashedTitle>
+          <SlashedTitle TitleLevel='h3'>Travel Video & Photo</SlashedTitle>
           <SectionDescription>Here you will find tools, tips and self experience to people like you, with passion and love for videos and photos and the travel images.</SectionDescription>
           <div className={styles['articles']}>
             <div className={styles['articles__hightlights']}>
@@ -129,7 +129,7 @@ const Home = ({ headerHeight }, ref) => {
       <section className={styles['tips-section']}>
         <SectionContainer>
           <div>
-            <SlashedTitle titleLevel='h3'>Tips</SlashedTitle>
+            <SlashedTitle TitleLevel='h3'>Tips</SlashedTitle>
             <SectionDescription>Those that we would like to receive before our travels. Besides our own tips, we also thanks other people who contributed with some tip.</SectionDescription>
           </div>
           <div className={styles['tips-article']}>

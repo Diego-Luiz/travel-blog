@@ -1,0 +1,8 @@
+.title{
+    color: var(--selection-clr);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 1.25;
+    font-weight: 450;
+    font-size: var(--fz-subsection-title);
+}

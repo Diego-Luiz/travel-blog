@@ -27,11 +27,19 @@
 	--fz-link-see-more: .85rem;
 	--fz-logo: 1.15rem;
 	--fz-sections-title: .95rem;
+	--fz-section-description: 1.05rem;
+	--fz-section-desc-title: 2.10rem;
+	--fz-slashed-title-specific: .85rem; 
 	--fz-article-title: .90rem;
 	--fz-impact-text: 1.80rem;
 	--fz-article-date: .80rem;
+	--fz-subsection-title: 1.20rem;
 }
-body{ font-family: 'Rubik'; }
+body{ 
+	font-family: 'Rubik'; 
+	margin: 0;
+	padding: 0;
+}
 body.--no-overflow{ overflow: hidden; }
 h1, h2, h3, h4, h5, h6, p, ul{
     margin: 0;
@@ -52,6 +60,20 @@ button{ cursor: pointer; }
 #app{
 	position: relative;
 	min-height: 100vh;
+}
+#modal-root{
+	display: block;
+	position: sticky;
+	inset: 0;
+	z-index: 10;
+	height: 0vh;
+	overflow: hidden;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
+}
+#modal-root.--active{
+	opacity: 1;
+	height: 100vh;
 }
 .container{
 	max-width: 80%;

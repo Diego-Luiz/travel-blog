@@ -1,0 +1,36 @@
+.divider{
+    position: relative;
+    height: 1px;
+    width: 100%;
+    background-color: var(--light-gray-clr);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.divider::before,
+.divider::after{
+    content: '';
+    position: absolute;
+    display: block;
+}
+.divider::before{ 
+    --size: 50px;  
+    inset: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--selection-clr);
+    border-radius: 50%;
+    box-shadow: 0 0 0 20px white;
+}
+.divider::after{
+    --size: 7px;
+    top: calc(50% - (var(--size) / 2) );
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    border: solid var(--size) white;
+    border-left-color: transparent;   
+    border-right-color: transparent;   
+    border-bottom-color: transparent;   
+}

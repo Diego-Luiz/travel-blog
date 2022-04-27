@@ -1,0 +1,23 @@
+.button{
+    position: relative;
+    padding: .45em .75em;
+    border: none;
+    border-radius: 50%;
+    color: var(--light-black-clr);
+    background-color: transparent;
+    transition-property: color, background;
+    transition-duration: .2s;
+    transition-timing-function: ease-in;
+}
+.button.--active{ background-color: var(--light-gray-clr); }
+.button:focus{ color: var(--amber-clr); }
+@supports selector(:focus-visible){
+    .button:focus{ color: var(--light-black-clr); }
+    .button:focus-visible{ 
+        outline: none;
+        color: var(--amber-clr); 
+    }
+}
+@media (hover:hover) and (pointer:fine){
+    .button:hover{ color: var(--amber-clr); }
+}

@@ -5,6 +5,11 @@
     color: var(--light-black-clr);
     letter-spacing: .15em;
 }
+.slashed-title.--specific-section{
+    font-size: var(--fz-slashed-title-specific);
+    color: var(--amber-clr);
+    letter-spacing: .25em;
+}
 .slashed-title::before{
     content: '\002F';
     margin-right: .5ch;

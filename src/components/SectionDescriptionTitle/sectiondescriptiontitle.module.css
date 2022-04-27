@@ -1,0 +1,6 @@
+.title{
+    padding: .75em 0;
+    font-size: var(--fz-section-desc-title);
+    font-weight: 500;
+    color: var(--light-black-clr);
+}
