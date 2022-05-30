@@ -18,3 +18,11 @@
 	font-size: var(--fz-page-desc);
 	text-align: center;
 }
+.intro-view__title,
+.intro-view__description{
+	--shadow-color: rgba(0, 0, 0, .6);
+	text-shadow: 2px 0 5px var(--shadow-color),
+				 4px 0 5px var(--shadow-color),
+				 -2px -2px 5px var(--shadow-color),
+				 -2px 2px 5px var(--shadow-color);
+}

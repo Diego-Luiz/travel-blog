@@ -43,3 +43,8 @@
         color: var(--amber-clr);
     }
 }
+@media screen and (min-width: 576px) {
+    .pagination{
+        padding: 1em;
+    }
+}

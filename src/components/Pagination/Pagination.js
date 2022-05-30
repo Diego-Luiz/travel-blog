@@ -19,7 +19,6 @@ class Pagination extends React.Component{
     this.dfnFirstLastIndexOfBtnVisible = this.dfnFirstLastIndexOfBtnVisible.bind(this);
     this.handleBtnsBackFwdClick = this.handleBtnsBackFwdClick.bind(this);
   }  
-  
   createBtnsPagination(){
     const { articlesLength, articlesPView } = this.props;
     let start = 0, btnIndex = 1, btnPagVisibleIndex = 0;

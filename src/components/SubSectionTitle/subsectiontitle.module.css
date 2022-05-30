@@ -6,3 +6,9 @@
     font-weight: 450;
     font-size: var(--fz-subsection-title);
 }
+@media screen and (min-width: 576px) {
+    .title{ 
+        margin-bottom: 1.75em;
+        text-align: center; 
+    }
+}

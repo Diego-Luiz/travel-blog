@@ -143,7 +143,7 @@ const Tips = ({ headerHeight, handleTogglePostModal, postModalActive }, ref) => 
       id: 10,
       src: post2
     }
-  ]
+  ];
   return (
     <>
       <SectionBackground src={tipsPageBackground}/>

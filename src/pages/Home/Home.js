@@ -68,7 +68,7 @@ const Home = ({ headerHeight }, ref) => {
             <h4 className={styles['title']}>About us</h4>
             <p className={styles['content']}>Travellers Club is the history about our travels adventures. The heart touching moments, people we have met and their grown-up places. Come to know more about us!</p>
             <Link 
-              to='/' 
+              to='/about' 
               className={styles['link']}
             >
               More about us
@@ -123,7 +123,7 @@ const Home = ({ headerHeight }, ref) => {
               />
             </div>
           </div>
-          <SeeMoreLink reference='/'>See more</SeeMoreLink>
+          <SeeMoreLink reference='/photoandvideo'>See more</SeeMoreLink>
         </SectionContainer>
       </section>
       <section className={styles['tips-section']}>

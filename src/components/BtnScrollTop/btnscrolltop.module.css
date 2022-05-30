@@ -7,13 +7,13 @@
     justify-content: center;
     align-items: center;
     margin-left: 1em;
-    padding: .25em;
+    padding: .25em .20em;
     border-radius: 7px;
     border-style: ridge;
     border-color: transparent;
     background-color: var(--light-black-clr);
     color: var(--white-clr);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     opacity: 0;
     transition: opacity .5s ease-in,
                 border-color .2s ease-in;

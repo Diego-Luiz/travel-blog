@@ -28,7 +28,11 @@ class DropdownMenu extends React.Component{
         </button>
         <ul
           id={`${this.props.buttonLabel}__list`}
-          className={[`${styles['dropdown__content']}`, `${styles[this.state.contentExpanded ? '--active': '']}`].join(' ')}
+          className={[
+            `${styles['dropdown__content']}`, 
+            `${styles[this.state.contentExpanded && !this.props.headerHidden ? '--active': '']}`
+            ].join(' ')
+          }
         >
           <li><MainNavLink path='/' label='Europe' handleToggleMenu={this.props.handleToggleMenu}/></li>
           <li><MainNavLink path='/' label='America' handleToggleMenu={this.props.handleToggleMenu}/></li>

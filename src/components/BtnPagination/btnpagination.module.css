@@ -21,3 +21,8 @@
 @media (hover:hover) and (pointer:fine){
     .button:hover{ color: var(--amber-clr); }
 }
+@media screen and (min-width: 576px) {
+    .button{
+        padding: .75em 1.15em;
+    }
+}

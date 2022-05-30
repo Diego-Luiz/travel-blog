@@ -5,7 +5,7 @@ import styles from './subsectionarticle.module.css';
 const SubSectionArticle = ({ article, TitleLevel }) => {
   return (
     <Link 
-      to='/tips'
+      to=''
       className={styles['link']}
     >
       <article
@@ -14,6 +14,7 @@ const SubSectionArticle = ({ article, TitleLevel }) => {
         <div className={styles['img-box']}>
           <img 
             src={article.imageSrc}
+            alt={''}
             className={styles['article__img']}
           />
         </div>

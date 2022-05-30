@@ -40,7 +40,8 @@ class Header extends React.Component{
         className={
           [ styles[`${this.props.toggleMenu ? '--menu-active' : ''}`], 
             styles[`${this.state.hidden ? '--hidden': ''}`], 
-            styles[`${this.props.firstSectionIntersected ? '--fstSectionIntersected': ''}`]
+            styles[`${this.props.firstSectionIntersected ? '--fstSectionIntersected': ''}`],
+            styles[`${this.props.isInAboutSection ? '--isInAboutSection' : ''}`]
           ].join(' ')
         }
         ref={this.props.innerRef}
@@ -61,6 +62,7 @@ class Header extends React.Component{
             <MenuHamburguer 
               menuStatus={this.props.toggleMenu ? '--active': '--closed'} 
               firstSectionIntersected={this.props.firstSectionIntersected}
+              isInAboutSection={this.props.isInAboutSection}
             />
           </button>
           <ul 
@@ -75,16 +77,19 @@ class Header extends React.Component{
             }
           >
             <li>
-              <DropdownMenu buttonLabel='Destinations' />
+              <DropdownMenu 
+                buttonLabel='Destinations' 
+                headerHidden={this.state.hidden}
+              />
             </li>
             <li>
               <MainNavLink path='/tips' label='Tips' />
             </li>
             <li>
-              <MainNavLink path='/' label='Photos and Video' />
+              <MainNavLink path='/photoandvideo' label='Photos and Video' />
             </li>
             <li>
-              <MainNavLink path='/' label='About us' />
+              <MainNavLink path='/about' label='About us' />
             </li>
           </ul>
         </nav>  

@@ -8,7 +8,9 @@ import './styles/normalize.css';
 import './styles/global.css';
 import { 
   Home, 
-  Tips 
+  Tips,
+  PhotoAndVideo,
+  About
 } from './pages';
 import { Layout } from './components';
 import appWithUseLocationHOC from './hocs/appWithUseLocationHOC';
@@ -22,23 +24,21 @@ class App extends React.Component{
     this.firstSectionRef = React.createRef();
     this.state = {
       headerHeight: 0,
-      firstSectionIntersected: false,
+      fstSectionIntersected: false,
       toggleMenu: false,
-      postModalActive: false
+      postModalActive: false,
+      bodyWithoutOverflow: false,
+      inAboutSection: false
     };
     this.appResizeOb = null;
     this.headerResizeOb = null;
-    this.firstSectionIntersOb = null;
-    this.firstSectionObShouldBeInitialized = true;
-    this.firstIntersObOptions = {
-      threshold: 0.2
-    };
-    this.handleFirstSectionIntersection = this.handleFirstSectionIntersection.bind(this);
+    this.handlePageScroll = this.handlePageScroll.bind(this);
     this.handleToggleMenu = this.handleToggleMenu.bind(this);
-    this.handleFirstIntersObAssignment = this.handleFirstIntersObAssignment.bind(this);
     this.handleTogglePostModalActive = this.handleTogglePostModalActive.bind(this);
+    this.toggleBodyOverflow = this.toggleBodyOverflow.bind(this);
   }
   componentDidMount(){
+    window.addEventListener('scroll', this.handlePageScroll);
     this.app = document.getElementById('app');
     this.appResizeOb = new ResizeObserver((entries) => {
       const width = entries[0].contentRect.width;
@@ -49,72 +49,72 @@ class App extends React.Component{
       const height = entries[0].target.clientHeight;
       if(height !== this.state.headerHeight) this.setState({ headerHeight: height });
     });
-    if(this.headerRef.current) this.headerResizeOb.observe(this.headerRef.current);
-    this.firstSectionIntersOb = new IntersectionObserver(this.handleFirstSectionIntersection, this.firstIntersObOptions);
-    this.handleFirstIntersObAssignment();
+    if(this.headerRef.current) this.headerResizeOb.observe(this.headerRef.current);  
+   
+    if(this.props.location.pathname === '/about') this.setState({ inAboutSection: true });
   }
-  componentDidUpdate(){
+  componentDidUpdate(prevProps, prevState){
     const { pathname } = this.props.location;
-    const body = document.querySelector('body');
     const modalRoot = document.getElementById('modal-root');
     if(pathname !== this.lastLocation){
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
       this.lastLocation = pathname;
       if(this.state.toggleMenu) this.handleToggleMenu();
+      if(pathname === '/about'){
+        this.setState({ inAboutSection: true });
+      } else {
+        this.setState({ inAboutSection: false });
+      }
     }
-    this.handleFirstIntersObAssignment();
-    if(this.state.postModalActive){ 
-      body.classList.add('--no-overflow');
-      modalRoot.classList.add('--active');
-    }
-    else if(!this.state.postModalActive){
-      body.classList.remove('--no-overflow');
-      modalRoot.classList.remove('--active');
-    }
+    if(this.state.postModalActive) modalRoot.classList.add('--active');
+    else if(!this.state.postModalActive) modalRoot.classList.remove('--active');
+    if(prevState.bodyWithoutOverflow !== this.state.bodyWithoutOverflow) this.toggleBodyOverflow(this.state.bodyWithoutOverflow);
+  }
+  toggleBodyOverflow(status){
+    const body = document.querySelector('body');
+    if(status) body.classList.add('--no-overflow');
+    else body.classList.remove('--no-overflow');
   }
   componentWillUnmount(){ 
+    window.removeEventListener('scroll', this.handlePageScroll);
     if(this.headerRef.current) this.headerResizeOb.unobserve(this.headerRef.current); 
-    if(this.firstSectionRef.current) this.firstSectionIntersOb.unobserve(this.firstSectionRef.current);
     this.appResizeOb.unobserve(this.app);
-  }
-  
-  handleFirstIntersObAssignment(){
-    if(this.firstSectionRef.current && this.firstSectionObShouldBeInitialized){
-      this.firstSectionIntersOb.observe(this.firstSectionRef.current);
-      this.firstSectionObShouldBeInitialized = false;
-    }
-    else if(this.firstSectionRef.current === null){
-      this.firstSectionIntersOb.disconnect();
-      if(this.state.firstSectionIntersected) this.setState({ firstSectionIntersected: false });
-      this.firstSectionObShouldBeInitialized = true;
-    }
-  }
-  handleFirstSectionIntersection([entry]){
-    console.log('entry: ', entry);
-    if(entry.isIntersecting || (!entry.isIntersecting && entry.boundingClientRect.top < 0)){
-      this.setState({ firstSectionIntersected: true });
-    } else if(!entry.isIntersecting && entry.boundingClientRect.top >= 0){
-      this.setState({ firstSectionIntersected: false });
-    }
+  }  
+  handlePageScroll(){
+    const fstSectionDistanceFromTop = this.firstSectionRef.current.offsetTop;
+    if((window.pageYOffset >= fstSectionDistanceFromTop) && !this.state.fstSectionIntersected) this.setState({ fstSectionIntersected: true });
+    else if((window.pageYOffset < fstSectionDistanceFromTop)) this.setState({ fstSectionIntersected: false });
   }
   handleToggleMenu(){
     this.setState((state) => {
-      const body = document.querySelector('body');
-      if(!state.toggleMenu){
-        body.classList.add('--no-overflow');
-      } else {  
-        body.classList.remove('--no-overflow');
-      } 
+      if(!state.toggleMenu) this.toggleBodyOverflow(true);
+      else this.toggleBodyOverflow(false);
       return ({ toggleMenu: !state.toggleMenu })
     });
   }
   handleTogglePostModalActive(){
-    this.setState((state) => ({ postModalActive: !state.postModalActive }));
+    this.setState((state) => { 
+      let modalActive = false;
+      let bodyOverflow = false;
+      if(!state.postModalActive){
+        modalActive = true;
+        bodyOverflow = true;
+      }
+      return ({ 
+        bodyWithoutOverflow: bodyOverflow,
+        postModalActive: modalActive
+      });
+    });
   }
   render(){
     return (
       <Routes>
         <Route path='/' element={<Layout 
-            firstSectionIntersected={this.state.firstSectionIntersected}
+            firstSectionIntersected={this.state.fstSectionIntersected}
+            isInAboutSection={this.state.inAboutSection}
             handleToggleMenu={this.handleToggleMenu}
             toggleMenu={this.state.toggleMenu}
             headerHeight={this.state.headerHeight}
@@ -125,6 +125,18 @@ class App extends React.Component{
             ref={this.firstSectionRef}
           />} />
           <Route path='tips' element={<Tips 
+            headerHeight={this.state.headerHeight}
+            postModalActive={this.state.postModalActive}
+            handleTogglePostModal={this.handleTogglePostModalActive}
+            ref={this.firstSectionRef}
+          />} />
+          <Route path='photoandvideo' element={<PhotoAndVideo
+            headerHeight={this.state.headerHeight}
+            postModalActive={this.state.postModalActive}
+            handleTogglePostModal={this.handleTogglePostModalActive}
+            ref={this.firstSectionRef}
+          />} />
+          <Route path='about' element={<About 
             headerHeight={this.state.headerHeight}
             postModalActive={this.state.postModalActive}
             handleTogglePostModal={this.handleTogglePostModalActive}

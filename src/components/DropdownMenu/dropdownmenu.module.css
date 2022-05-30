@@ -59,6 +59,7 @@
         min-width: 200px;
         padding-top: 0;
         background-color: var(--black-clr); 
+        color: var(--white-clr);
         transition-property: max-height, padding;
     }
     .dropdown__content.--active{ padding: 1em; }
