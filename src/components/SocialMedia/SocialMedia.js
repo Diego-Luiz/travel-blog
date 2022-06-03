@@ -11,10 +11,10 @@ const SocialMedia = () => {
   return (
     <ul className={styles['list']}>
       <li>
-        <Link to='/' className={styles['list__link']}>
+        <a href='https://github.com/Diego-Luiz/travel-blog' className={styles['list__link']}>
           <span className="sr-only">Github</span>
           <FaGithub />
-        </Link>
+        </a>
       </li>
       <li>
         <Link to='/' className={styles['list__link']}>
@@ -24,7 +24,7 @@ const SocialMedia = () => {
       </li>
       <li>
         <Link to='/' className={styles['list__link']}>
-          <span className="sr-only">Instagram</span>
+          <span className="sr-only">Twitter</span>
           <FaTwitter />
         </Link>
       </li>

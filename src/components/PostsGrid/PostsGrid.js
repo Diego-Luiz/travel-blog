@@ -11,6 +11,7 @@ class PostsGrid extends React.Component{
     };
     this.handleModalClick = this.handleModalClick.bind(this);
     this.handlePostClick = this.handlePostClick.bind(this);
+    this.handleKbrdControll = this.handleKbrdControll.bind(this);
   }
   handlePostClick(itemIndex){
     this.setState({ postIndexModal: itemIndex });
@@ -27,11 +28,28 @@ class PostsGrid extends React.Component{
       this.setState({ postIndexModal: newPostIndex });
     }
   }
+  handleKbrdControll({ key }){
+    const postsLenght = this.props.posts.length - 1;
+    let { postIndexModal } = this.state;
+    if(key.includes('Arrow')){
+      if(key === 'ArrowDown' || key === 'ArrowLeft'){
+        postIndexModal =  postIndexModal - 1 < 0 ? 0 : postIndexModal - 1;
+      } else if(key === 'ArrowUp' || key === 'ArrowRight'){
+        postIndexModal =  postIndexModal + 1 > postsLenght ? postsLenght : postIndexModal + 1;
+      }
+      this.setState({ postIndexModal });
+    } else if(key === 'Escape'){
+      this.props.handleTogglePostModal();
+    }
+  }
   render(){
-    const { posts, postModalActive } = this.props;
+    const { posts, postModalActive, innerRef } = this.props;
     let itemIndex = 0;
     return (
-      <section className={styles['postsgrid']}>
+      <section 
+        className={styles['postsgrid']}
+        onKeyDown={this.handleKbrdControll}
+      >
         {
           posts.map(({ id, src }) => {
             itemIndex += 1;
@@ -54,6 +72,7 @@ class PostsGrid extends React.Component{
           <PostModal 
             post={posts[this.state.postIndexModal].src}
             handleClick={this.handleModalClick}
+            ref={innerRef}
           />
         )}
         
@@ -62,4 +81,4 @@ class PostsGrid extends React.Component{
   }
 }
 
-export default PostsGrid;
+export default React.forwardRef((props, ref) => <PostsGrid {...props} innerRef={ref}/>);

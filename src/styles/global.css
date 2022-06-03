@@ -80,6 +80,7 @@ button{ cursor: pointer; }
 	max-width: 80%;
     margin: 0 auto;
 }
+.main-content{ min-height: 100vh; }
 @media screen and (min-width: 576px){
 	:root{
 		--fz-nav-link: 1.15rem;

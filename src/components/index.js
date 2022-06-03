@@ -23,6 +23,7 @@ import Pagination from "./Pagination/Pagination";
 import BtnPagination from "./BtnPagination/BtnPagination";
 import PostsGrid from "./PostsGrid/PostsGrid";
 import PostModal from "./PostModal/PostModal";
+import LoadingAnimation from "./LoadingAnimation/LoadingAnimation";
 
 export {
   Layout, 
@@ -49,5 +50,6 @@ export {
   Pagination,
   BtnPagination ,
   PostsGrid,
-  PostModal
+  PostModal,
+  LoadingAnimation
 };

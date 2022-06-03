@@ -1,0 +1,10 @@
+.container{
+    color: red;
+    font-size: 4rem;
+    position: fixed;
+    inset: 50%;
+    width: max-content;
+    height: max-content;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+}

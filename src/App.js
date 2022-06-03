@@ -1,4 +1,7 @@
-import React from 'react';
+import React, 
+{ Suspense,
+  lazy
+} from 'react';
 import {
   Routes,
   Route
@@ -6,14 +9,16 @@ import {
 
 import './styles/normalize.css';
 import './styles/global.css';
-import { 
-  Home, 
-  Tips,
-  PhotoAndVideo,
-  About
-} from './pages';
-import { Layout } from './components';
 import appWithUseLocationHOC from './hocs/appWithUseLocationHOC';
+import { 
+  Layout,
+  LoadingAnimation 
+} from './components';
+
+const Home = lazy(() => import('./pages/Home/Home'));
+const Tips = lazy(() => import('./pages/Tips/Tips'));
+const PhotoAndVideo = lazy(() => import('./pages/PhotoAndVideo/PhotoAndVideo'));
+const About = lazy(() => import('./pages/About/About'));
 
 class App extends React.Component{
   constructor(props){
@@ -22,6 +27,7 @@ class App extends React.Component{
     this.lastLocation = this.props.location.pathname;
     this.headerRef = React.createRef();
     this.firstSectionRef = React.createRef();
+    this.postModalBtnRef = React.createRef();
     this.state = {
       headerHeight: 0,
       fstSectionIntersected: false,
@@ -50,7 +56,6 @@ class App extends React.Component{
       if(height !== this.state.headerHeight) this.setState({ headerHeight: height });
     });
     if(this.headerRef.current) this.headerResizeOb.observe(this.headerRef.current);  
-   
     if(this.props.location.pathname === '/about') this.setState({ inAboutSection: true });
   }
   componentDidUpdate(prevProps, prevState){
@@ -69,24 +74,30 @@ class App extends React.Component{
         this.setState({ inAboutSection: false });
       }
     }
-    if(this.state.postModalActive) modalRoot.classList.add('--active');
+    if(this.state.postModalActive){
+      modalRoot.classList.add('--active');
+      const postModalBtnRef  = this.postModalBtnRef.current;
+      if(postModalBtnRef) postModalBtnRef.focus();
+    }
     else if(!this.state.postModalActive) modalRoot.classList.remove('--active');
     if(prevState.bodyWithoutOverflow !== this.state.bodyWithoutOverflow) this.toggleBodyOverflow(this.state.bodyWithoutOverflow);
-  }
-  toggleBodyOverflow(status){
-    const body = document.querySelector('body');
-    if(status) body.classList.add('--no-overflow');
-    else body.classList.remove('--no-overflow');
   }
   componentWillUnmount(){ 
     window.removeEventListener('scroll', this.handlePageScroll);
     if(this.headerRef.current) this.headerResizeOb.unobserve(this.headerRef.current); 
     this.appResizeOb.unobserve(this.app);
   }  
+  toggleBodyOverflow(status){
+    const body = document.querySelector('body');
+    if(status) body.classList.add('--no-overflow');
+    else body.classList.remove('--no-overflow');
+  }
   handlePageScroll(){
-    const fstSectionDistanceFromTop = this.firstSectionRef.current.offsetTop;
-    if((window.pageYOffset >= fstSectionDistanceFromTop) && !this.state.fstSectionIntersected) this.setState({ fstSectionIntersected: true });
-    else if((window.pageYOffset < fstSectionDistanceFromTop)) this.setState({ fstSectionIntersected: false });
+    if(this.firstSectionRef.current){
+      const fstSectionDistanceFromTop = this.firstSectionRef.current.offsetTop;
+      if((window.pageYOffset >= fstSectionDistanceFromTop) && !this.state.fstSectionIntersected) this.setState({ fstSectionIntersected: true });
+      else if((window.pageYOffset < fstSectionDistanceFromTop)) this.setState({ fstSectionIntersected: false });
+    }
   }
   handleToggleMenu(){
     this.setState((state) => {
@@ -120,29 +131,50 @@ class App extends React.Component{
             headerHeight={this.state.headerHeight}
             ref={this.headerRef}
           />}>
-          <Route index element={<Home 
-            headerHeight={this.state.headerHeight} 
-            ref={this.firstSectionRef}
-          />} />
-          <Route path='tips' element={<Tips 
-            headerHeight={this.state.headerHeight}
-            postModalActive={this.state.postModalActive}
-            handleTogglePostModal={this.handleTogglePostModalActive}
-            ref={this.firstSectionRef}
-          />} />
-          <Route path='photoandvideo' element={<PhotoAndVideo
-            headerHeight={this.state.headerHeight}
-            postModalActive={this.state.postModalActive}
-            handleTogglePostModal={this.handleTogglePostModalActive}
-            ref={this.firstSectionRef}
-          />} />
-          <Route path='about' element={<About 
-            headerHeight={this.state.headerHeight}
-            postModalActive={this.state.postModalActive}
-            handleTogglePostModal={this.handleTogglePostModalActive}
-            ref={this.firstSectionRef}
-          />} />
-          <Route path='*' element={<h1>Page not found.</h1>} />
+          
+          <Route index element={<Suspense fallback={<LoadingAnimation />}>
+            <Home 
+              headerHeight={this.state.headerHeight} 
+              ref={this.firstSectionRef}
+            />
+          </Suspense>} />
+          
+          <Route path='tips' element={<Suspense fallback={<LoadingAnimation />}>
+            <Tips 
+              headerHeight={this.state.headerHeight}
+              postModalActive={this.state.postModalActive}
+              handleTogglePostModal={this.handleTogglePostModalActive}
+              ref={{
+                firstSectionRef: this.firstSectionRef,
+                postModalRef: this.postModalBtnRef
+              }}
+            />
+          </Suspense>} />
+          <Route path='photoandvideo' element={<Suspense fallback={<LoadingAnimation />}>
+            <PhotoAndVideo
+              headerHeight={this.state.headerHeight}
+              postModalActive={this.state.postModalActive}
+              handleTogglePostModal={this.handleTogglePostModalActive}
+              ref={{
+                firstSectionRef: this.firstSectionRef,
+                postModalRef: this.postModalBtnRef
+              }}
+            />
+          </Suspense>} />
+          <Route path='about' element={<Suspense fallback={<LoadingAnimation />}>
+            <About 
+              headerHeight={this.state.headerHeight}
+              postModalActive={this.state.postModalActive}
+              handleTogglePostModal={this.handleTogglePostModalActive}
+              ref={{
+                firstSectionRef: this.firstSectionRef,
+                postModalRef: this.postModalBtnRef
+              }}
+            />
+          </Suspense>} />
+          <Route path='*' element={<Suspense fallback={<LoadingAnimation />}>
+            <h1>Page not found.</h1>
+          </Suspense>} />
         </Route>
       </Routes>
     );

@@ -21,7 +21,9 @@ const Layout = ({ firstSectionIntersected, handleToggleMenu, toggleMenu, headerH
       firstSectionIntersected={firstSectionIntersected}
       toggleMenu={toggleMenu}
     />
-    <Outlet />
+    <main className='main-content'>
+      <Outlet />
+    </main>
     <Footer />
   </>
 );

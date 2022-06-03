@@ -4,7 +4,7 @@ import { IoMdClose } from 'react-icons/io';
 
 import styles from './postmodal.module.css';
 
-const PostModal = ({ post, handleClick }) => {
+const PostModal = ({ post, handleClick }, ref) => {
   return (
     ReactDom.createPortal(
       <div className={styles['container']}>
@@ -13,6 +13,7 @@ const PostModal = ({ post, handleClick }) => {
           type='button'
           className={styles['btn-close']}
           onClick={handleClick.bind(this, 'close')}
+          ref={ref}
         >
           <IoMdClose />
         </button>
@@ -45,4 +46,4 @@ const PostModal = ({ post, handleClick }) => {
   );
 };
 
-export default PostModal;
+export default React.forwardRef(PostModal);
