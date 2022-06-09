@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './postsgrid.module.css';
 import PostModal from '../PostModal/PostModal';
+import { ModalPosts } from '../../data/postsPhotoVideo';
 
 class PostsGrid extends React.Component{
   constructor(props){
@@ -19,7 +20,7 @@ class PostsGrid extends React.Component{
   }
   handleModalClick(typeButton){
     if(typeButton === 'close') this.props.handleTogglePostModal();
-    else{
+    else {
       const postsLenght = this.props.posts.length - 1;
       const { postIndexModal } = this.state;
       let newPostIndex = 0;
@@ -43,7 +44,7 @@ class PostsGrid extends React.Component{
     }
   }
   render(){
-    const { posts, postModalActive, innerRef } = this.props;
+    const { posts, postModalActive, innerRef, windowWidth } = this.props;
     let itemIndex = 0;
     return (
       <section 
@@ -70,7 +71,7 @@ class PostsGrid extends React.Component{
         }
         {postModalActive && (
           <PostModal 
-            post={posts[this.state.postIndexModal].src}
+            post={ModalPosts.get(this.state.postIndexModal).get(windowWidth)}
             handleClick={this.handleModalClick}
             ref={innerRef}
           />

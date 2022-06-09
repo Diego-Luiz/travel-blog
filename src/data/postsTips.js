@@ -1,6 +1,6 @@
 import healthCare from '../assets/images/healthcare-recomendations.jpg';
 import infoSecurity from '../assets/images/information-security.jpg';
-import post1 from '../assets/images/place-grid.jpg';
+import post1 from '../assets/images/tips-grid-1.jpg';
 import post2 from '../assets/images/tips-grid-2.jpg';
 import post3 from '../assets/images/tips-grid-3.jpg';
 import post4 from '../assets/images/tips-grid-4.jpg';

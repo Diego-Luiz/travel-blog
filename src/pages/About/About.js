@@ -1,11 +1,16 @@
 import React from 'react';
 
 import styles from './about.module.css';
-import ourImg from '../../assets/images/imgaboutus.jpg';
+import { AboutUsBackgrounds } from '../../data/pagesTopBackground';
 import { Posts } from '../../data/postsTips';
 import { PostsGrid, SectionContainer } from '../../components';
 
-const About = ({ headerHeight, postModalActive, handleTogglePostModal }, ref) => {
+const About = ({ headerHeight, postModalActive, handleTogglePostModal, windowWidth }, ref) => {
+  const dfnSrcAboutUs = () => {
+    if(windowWidth <= 768) return AboutUsBackgrounds.get(768);
+    if(windowWidth <= 1920) return AboutUsBackgrounds.get(1920);
+    return AboutUsBackgrounds.get(4000);
+  };
   return (
     <>
       <div 
@@ -14,7 +19,7 @@ const About = ({ headerHeight, postModalActive, handleTogglePostModal }, ref) =>
       >
         <div className={styles['img-box']}>
           <img 
-            src={ourImg}
+            src={dfnSrcAboutUs()}
             alt=''
             className={styles['img']}
           />

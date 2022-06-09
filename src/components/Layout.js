@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { 
   Header, 
   Footer, 
-  BtnScrollTop 
+  BtnScrollTop
 } from '.';
 
 const Layout = ({ firstSectionIntersected, handleToggleMenu, toggleMenu, headerHeight, isInAboutSection }, ref) => (

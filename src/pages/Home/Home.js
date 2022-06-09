@@ -12,14 +12,24 @@ import {
   SectionContainer,
   ArticleWithDate
 } from '../../components';
-import homePageBackground from '../../assets/images/homepage-background.jpg';
-import instagramArticleImg from '../../assets/images/lightravel-instagram.jpg'
+
+import { HomeTopBackgrounds } from '../../data/pagesTopBackground';
+import instagramArticleImg from '../../assets/images/lightravel-instagram.jpg';
+import aboutSectionBackground1 from '../../assets/images/discover-world.jpg';
+import aboutSectionBackground2 from '../../assets/images/discover-world-4000px.jpg';
 import { LastDestinationsArticles } from '../../data/lastDestinationArticles';
 
-const Home = ({ headerHeight }, ref) => {
+const Home = ({ headerHeight, windowWidth }, ref) => {
+  const aboutSectionBackground = () => {
+    if(windowWidth <= 768) return ({ backgroundImage: `url(${aboutSectionBackground1})` });
+    return ({ backgroundImage: `url(${aboutSectionBackground2})` });
+  };
   return (
     <>
-      <SectionBackground src={homePageBackground}/>
+      <SectionBackground 
+        windowWidth={windowWidth}
+        backgrounds={HomeTopBackgrounds}
+      />
       <IntroView 
         title={'Welcome to the Club'}
         description={'Destinations and Tips, Photos and Videos'} 
@@ -32,7 +42,10 @@ const Home = ({ headerHeight }, ref) => {
           <SeeMoreLink reference='/'>See more</SeeMoreLink>
         </SectionContainer>
       </section>
-      <section className={styles['about-section']}>
+      <section 
+        className={styles['about-section']}
+        style={aboutSectionBackground()}
+      >
         <SectionContainer
           autoHeight={true}
         >

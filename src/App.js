@@ -24,12 +24,12 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.app = null;
-    this.lastLocation = this.props.location.pathname;
     this.headerRef = React.createRef();
     this.firstSectionRef = React.createRef();
     this.postModalBtnRef = React.createRef();
     this.state = {
       headerHeight: 0,
+      windowWidth: 0,
       fstSectionIntersected: false,
       toggleMenu: false,
       postModalActive: false,
@@ -47,8 +47,16 @@ class App extends React.Component{
     window.addEventListener('scroll', this.handlePageScroll);
     this.app = document.getElementById('app');
     this.appResizeOb = new ResizeObserver((entries) => {
-      const width = entries[0].contentRect.width;
-      if(width >= 992 && this.state.toggleMenu) this.setState({ toggleMenu: false });
+      let width = entries[0].contentRect.width;
+      if(width <= 768){
+        width = 768;
+      } else if(width <= 1920){
+        width = 1920;
+      } else {
+        width = 4000;
+      }
+      this.setState({ windowWidth: width });
+      if(entries[0].contentRect.width >= 992 && this.state.toggleMenu) this.setState({ toggleMenu: false });
     });
     this.appResizeOb.observe(this.app);
     this.headerResizeOb = new ResizeObserver((entries) => {
@@ -60,19 +68,16 @@ class App extends React.Component{
   }
   componentDidUpdate(prevProps, prevState){
     const { pathname } = this.props.location;
+    const { pathname:lastLocation } = prevProps.location;
     const modalRoot = document.getElementById('modal-root');
-    if(pathname !== this.lastLocation){
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-      this.lastLocation = pathname;
+    let inAboutSection = false;
+    if(pathname !== lastLocation){
       if(this.state.toggleMenu) this.handleToggleMenu();
-      if(pathname === '/about'){
-        this.setState({ inAboutSection: true });
-      } else {
-        this.setState({ inAboutSection: false });
-      }
+      if(pathname === '/about') inAboutSection = true; 
+      this.setState({
+        inAboutSection,
+        fstSectionIntersected: false
+      });
     }
     if(this.state.postModalActive){
       modalRoot.classList.add('--active');
@@ -103,7 +108,7 @@ class App extends React.Component{
     this.setState((state) => {
       if(!state.toggleMenu) this.toggleBodyOverflow(true);
       else this.toggleBodyOverflow(false);
-      return ({ toggleMenu: !state.toggleMenu })
+      return ({ toggleMenu: !state.toggleMenu });
     });
   }
   handleTogglePostModalActive(){
@@ -135,6 +140,7 @@ class App extends React.Component{
           <Route index element={<Suspense fallback={<LoadingAnimation />}>
             <Home 
               headerHeight={this.state.headerHeight} 
+              windowWidth={this.state.windowWidth}
               ref={this.firstSectionRef}
             />
           </Suspense>} />
@@ -142,6 +148,7 @@ class App extends React.Component{
           <Route path='tips' element={<Suspense fallback={<LoadingAnimation />}>
             <Tips 
               headerHeight={this.state.headerHeight}
+              windowWidth={this.state.windowWidth}
               postModalActive={this.state.postModalActive}
               handleTogglePostModal={this.handleTogglePostModalActive}
               ref={{
@@ -153,6 +160,7 @@ class App extends React.Component{
           <Route path='photoandvideo' element={<Suspense fallback={<LoadingAnimation />}>
             <PhotoAndVideo
               headerHeight={this.state.headerHeight}
+              windowWidth={this.state.windowWidth}
               postModalActive={this.state.postModalActive}
               handleTogglePostModal={this.handleTogglePostModalActive}
               ref={{
@@ -164,6 +172,7 @@ class App extends React.Component{
           <Route path='about' element={<Suspense fallback={<LoadingAnimation />}>
             <About 
               headerHeight={this.state.headerHeight}
+              windowWidth={this.state.windowWidth}
               postModalActive={this.state.postModalActive}
               handleTogglePostModal={this.handleTogglePostModalActive}
               ref={{

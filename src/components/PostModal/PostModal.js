@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { IoMdClose } from 'react-icons/io';
 
 import styles from './postmodal.module.css';
 
@@ -15,7 +14,8 @@ const PostModal = ({ post, handleClick }, ref) => {
           onClick={handleClick.bind(this, 'close')}
           ref={ref}
         >
-          <IoMdClose />
+          <span className='sr-only'>Close image view</span>
+          <span aria-hidden='true'>x</span>
         </button>
         
         <div className={styles['img-container']}>
@@ -24,6 +24,7 @@ const PostModal = ({ post, handleClick }, ref) => {
             className={styles['btn-back']}
             onClick={handleClick.bind(this, 'back')}
           >
+            <span className='sr-only'>Back to previous image</span>
             <span aria-hidden='true' className={styles['arrow-icon']}>&#60;</span>
           </button>
           <img 
@@ -36,6 +37,7 @@ const PostModal = ({ post, handleClick }, ref) => {
             className={styles['btn-fwd']}
             onClick={handleClick.bind(this, 'fwd')}
           >
+            <span className='sr-only'>Forward to next image</span>
             <span aria-hidden='true' className={styles['arrow-icon']}>&#62;</span>
           </button>
         </div>

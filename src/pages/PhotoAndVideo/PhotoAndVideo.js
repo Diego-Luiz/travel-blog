@@ -11,16 +11,20 @@ import {
   SlashedTitle, 
   SubSectionWithArticles 
 } from '../../components';
-import pageBackground from '../../assets/images/photo-video-page-background.jpg';
+
 import {
   SubSectionArticles, 
   Posts 
 } from '../../data/postsPhotoVideo';
+import { PhotoVideoBackgrounds } from '../../data/pagesTopBackground';
 
-const PhotoAndVideo = ({ headerHeight, postModalActive, handleTogglePostModal }, ref) => {
+const PhotoAndVideo = ({ headerHeight, postModalActive, handleTogglePostModal, windowWidth }, ref) => {
   return (
     <>
-      <SectionBackground src={pageBackground}/>
+      <SectionBackground 
+        windowWidth={windowWidth}
+        backgrounds={PhotoVideoBackgrounds}
+      />
       <IntroView 
         title={'Photo and Video about travels'}
         description={'Cameras, Objectives and Edition Tools'}
@@ -51,6 +55,7 @@ const PhotoAndVideo = ({ headerHeight, postModalActive, handleTogglePostModal },
       />
       <SectionContainer>
         <PostsGrid 
+          windowWidth={windowWidth}
           posts={Posts}
           postModalActive={postModalActive}
           handleTogglePostModal={handleTogglePostModal}

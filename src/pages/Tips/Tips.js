@@ -12,13 +12,16 @@ import {
   SlashedTitle, 
   SubSectionWithArticles 
 } from '../../components';
-import tipsPageBackground from '../../assets/images/tips-background.jpg';
+import { TipsTopBackgrounds } from '../../data/pagesTopBackground';
 import { SubSectionArticles, Posts } from '../../data/postsTips';
 
-const Tips = ({ headerHeight, handleTogglePostModal, postModalActive }, ref) => {
+const Tips = ({ headerHeight, handleTogglePostModal, postModalActive, windowWidth }, ref) => {
   return (
     <>
-      <SectionBackground src={tipsPageBackground}/>
+      <SectionBackground 
+        windowWidth={windowWidth}
+        backgrounds={TipsTopBackgrounds}
+      />
       <IntroView 
         title={'Tips for travelers'}
         description={'Those we would like to know before our adventures'}
