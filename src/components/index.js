@@ -24,6 +24,8 @@ import BtnPagination from "./BtnPagination/BtnPagination";
 import PostsGrid from "./PostsGrid/PostsGrid";
 import PostModal from "./PostModal/PostModal";
 import LoadingAnimation from "./LoadingAnimation/LoadingAnimation";
+import SkeletonLoader from "./SkeletonLoader/SkeletonLoader";
+import PostGrid from "./PostGrid/PostGrid";
 
 export {
   Layout, 
@@ -51,5 +53,7 @@ export {
   BtnPagination ,
   PostsGrid,
   PostModal,
-  LoadingAnimation
+  LoadingAnimation,
+  SkeletonLoader,
+  PostGrid
 };

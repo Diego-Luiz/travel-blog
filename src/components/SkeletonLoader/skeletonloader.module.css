@@ -1,0 +1,21 @@
+.container{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    animation: skeletonLoading .75s linear infinite alternate;
+}
+.--image{ height: 170px; }
+.--image-grid{ height: 100%; }
+.--title{ height: 25px; }
+.--content{ height: 35px; }
+@media screen and (min-width: 758px){
+    .--image{ height: 220px; }
+}
+@keyframes skeletonLoading {
+    from{
+        background-color: hsl(210, 10%, 85%);
+    }
+    to{
+        background-color: hsl(210, 10%, 75%);
+    }
+}

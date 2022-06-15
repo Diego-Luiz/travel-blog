@@ -1,5 +1,9 @@
-.link{ display: inline-block; }
+.link{ 
+    display: inline-block; 
+    width: 100%;
+}
 .article{
+    width: 100%;
     padding: 1.25em 0;
     color: var(--light-black-clr);
 }
@@ -22,7 +26,13 @@
     display: block;
     max-width: 100%;
 }
+.article__img.--not-visible{
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+}
 .article__title{
+    position: relative;
     padding: .5em 0;
     font-size: .98rem;
     font-weight: 450;
@@ -30,6 +40,8 @@
     transition: color .45s ease-in-out;
 }
 .article__content{
+    position: relative;
+    margin-top: 1px;
     display: -webkit-box;
     font-size: .90rem;
     font-weight: 350;

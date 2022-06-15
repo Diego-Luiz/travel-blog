@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './postsgrid.module.css';
 import PostModal from '../PostModal/PostModal';
 import { ModalPosts } from '../../data/postsPhotoVideo';
+import PostGrid from '../PostGrid/PostGrid';
 
 class PostsGrid extends React.Component{
   constructor(props){
@@ -55,17 +56,11 @@ class PostsGrid extends React.Component{
           posts.map(({ id, src }) => {
             itemIndex += 1;
             return (
-              <button 
+              <PostGrid 
                 key={id}
-                className={styles['btn-container']}
-                onClick={this.handlePostClick.bind(this, itemIndex - 1)}
-              >
-                <img 
-                  src={src}
-                  alt=''
-                  className={styles['img']}
-                />
-              </button>
+                handleClick={this.handlePostClick.bind(this, itemIndex - 1)}
+                imageSrc={src}
+              />
             )
           })
         }

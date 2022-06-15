@@ -1,32 +1,69 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './subsectionarticle.module.css';
-
-const SubSectionArticle = ({ article, TitleLevel }) => {
-  return (
-    <Link 
-      to=''
-      className={styles['link']}
-    >
-      <article
-        className={styles['article']}
+import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
+class SubSectionArticle extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      contentLoaded: false
+    };
+    this.handleImageLoaded = this.handleImageLoaded.bind(this);
+  }
+  handleImageLoaded(){
+    this.setState({ contentLoaded: true });
+  }
+  render(){
+    const { contentLoaded } = this.state;
+    const { article, TitleLevel } = this.props;
+    return (
+      <Link 
+        to=''
+        className={styles['link']}
       >
-        <div className={styles['img-box']}>
-          <img 
-            src={article.imageSrc}
-            alt={''}
-            className={styles['article__img']}
-          />
-        </div>
-        <TitleLevel
-          className={styles['article__title']}
+        <article
+          className={styles['article']}
         >
-          {article.title}
-        </TitleLevel>
-        { article.content && <p className={styles['article__content']}>{article.content}</p>}
-      </article>
-    </Link>
-  );
+          <div className={styles['img-box']}>
+            {!contentLoaded && 
+              <SkeletonLoader 
+                type='image'
+              />
+            }
+            <img 
+              src={article.imageSrc}
+              alt={''}
+              className={[
+                styles['article__img'],
+                `${!contentLoaded ? styles['--not-visible']: ''}`
+              ].join(' ')}
+              onLoad={this.handleImageLoaded}
+            />
+          </div>
+          <TitleLevel
+            className={styles['article__title']}
+          >
+            {!contentLoaded && 
+              <SkeletonLoader 
+                type='title'
+              />
+            }
+            {contentLoaded && article.title}
+          </TitleLevel>
+          { article.content && <p className={styles['article__content']}>
+            {!contentLoaded && 
+              <SkeletonLoader 
+                type='content'
+              />
+            }
+            {contentLoaded && article.content}
+          </p>}
+        </article>
+      </Link>
+    );
+
+  }
 }
 
 export default SubSectionArticle;

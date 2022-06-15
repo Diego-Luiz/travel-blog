@@ -56,6 +56,7 @@ const Tips = ({ headerHeight, handleTogglePostModal, postModalActive, windowWidt
           posts={Posts}
           postModalActive={postModalActive}
           handleTogglePostModal={handleTogglePostModal}
+          windowWidth={windowWidth}
           ref={ref.postModalRef}
         />
       </SectionContainer>

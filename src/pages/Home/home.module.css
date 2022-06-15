@@ -23,7 +23,7 @@
     background-color: var(--light-gray-clr);
 }
 .about-section{
-    /* background-image: url(../../assets/images/discover-world.jpg); */
+    background-color: var(--light-black-clr);
     background-size: cover;
     background-position: center;
     color: var(--white-clr);
