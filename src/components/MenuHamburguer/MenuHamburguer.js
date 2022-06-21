@@ -1,6 +1,6 @@
 import styles from './menuhamburguer.module.css';
 
-const MenuHamburguer = ({ menuStatus, firstSectionIntersected, isInAboutSection }) => {
+const MenuHamburguer = ({ menuStatus, firstSectionIntersected, headerWhiteColorBlack }) => {
   
   return (
     <div 
@@ -9,7 +9,7 @@ const MenuHamburguer = ({ menuStatus, firstSectionIntersected, isInAboutSection 
         `${styles['box']}`, 
         `${styles[menuStatus]}`, 
         styles[`${firstSectionIntersected ? '--fstSectionIntersected': ''}`],
-        `${isInAboutSection ? styles['--isInAboutSection']: ''}`
+        `${headerWhiteColorBlack ? styles['--headerWhiteColorBlack']: ''}`
         ].join(' ')}
     >
       <div className={styles['bar']}></div>

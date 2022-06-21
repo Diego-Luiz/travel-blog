@@ -15,7 +15,7 @@ header{
 }
 header.--menu-active,
 header.--fstSectionIntersected,
-header.--isInAboutSection{ 
+header.--headerWhiteColorBlack{ 
     background: var(--white-clr); 
     color: var(--black-clr);
 }

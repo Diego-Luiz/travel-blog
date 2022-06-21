@@ -24,6 +24,7 @@ class PostsGrid extends React.Component{
     else {
       const postsLenght = this.props.posts.length - 1;
       const { postIndexModal } = this.state;
+      
       let newPostIndex = 0;
       if(typeButton === 'fwd') newPostIndex = (postIndexModal + 1) > postsLenght ? postsLenght : (postIndexModal + 1);
       else newPostIndex = (postIndexModal - 1) >= 0 ? (postIndexModal - 1) : 0;

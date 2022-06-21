@@ -13,7 +13,7 @@
 }
 .box.--active .bar,
 .box.--fstSectionIntersected .bar,
-.box.--isInAboutSection .bar{ 
+.box.--headerWhiteColorBlack .bar{ 
     background-color: var(--black-clr); 
 }
 .bar:nth-child(1){ 

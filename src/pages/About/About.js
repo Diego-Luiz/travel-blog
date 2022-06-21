@@ -52,6 +52,7 @@ const About = ({ headerHeight, postModalActive, handleTogglePostModal, windowWid
           posts={Posts}
           postModalActive={postModalActive}
           handleTogglePostModal={handleTogglePostModal}
+          windowWidth={windowWidth}
           ref={ref.postModalRef}
         />
       </SectionContainer>

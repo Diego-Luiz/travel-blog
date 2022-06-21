@@ -26,6 +26,7 @@ import PostModal from "./PostModal/PostModal";
 import LoadingAnimation from "./LoadingAnimation/LoadingAnimation";
 import SkeletonLoader from "./SkeletonLoader/SkeletonLoader";
 import PostGrid from "./PostGrid/PostGrid";
+import PageNotFound from "./PageNotFound/PageNotFound";
 
 export {
   Layout, 
@@ -55,5 +56,6 @@ export {
   PostModal,
   LoadingAnimation,
   SkeletonLoader,
-  PostGrid
+  PostGrid,
+  PageNotFound
 };

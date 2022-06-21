@@ -7,11 +7,11 @@ import {
   BtnScrollTop
 } from '.';
 
-const Layout = ({ firstSectionIntersected, handleToggleMenu, toggleMenu, headerHeight, isInAboutSection }, ref) => (
+const Layout = ({ firstSectionIntersected, handleToggleMenu, toggleMenu, headerHeight, headerWhiteColorBlack }, ref) => (
   <>
     <Header 
       firstSectionIntersected={firstSectionIntersected} 
-      isInAboutSection={isInAboutSection}
+      headerWhiteColorBlack={headerWhiteColorBlack}
       handleToggleMenu={handleToggleMenu}
       toggleMenu={toggleMenu}
       headerHeight={headerHeight}

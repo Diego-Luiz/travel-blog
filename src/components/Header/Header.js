@@ -41,7 +41,7 @@ class Header extends React.Component{
           [ styles[`${this.props.toggleMenu ? '--menu-active' : ''}`], 
             styles[`${this.state.hidden ? '--hidden': ''}`], 
             styles[`${this.props.firstSectionIntersected ? '--fstSectionIntersected': ''}`],
-            styles[`${this.props.isInAboutSection ? '--isInAboutSection' : ''}`]
+            styles[`${this.props.headerWhiteColorBlack ? '--headerWhiteColorBlack' : ''}`]
           ].join(' ')
         }
         ref={this.props.innerRef}
@@ -62,7 +62,7 @@ class Header extends React.Component{
             <MenuHamburguer 
               menuStatus={this.props.toggleMenu ? '--active': '--closed'} 
               firstSectionIntersected={this.props.firstSectionIntersected}
-              isInAboutSection={this.props.isInAboutSection}
+              headerWhiteColorBlack={this.props.headerWhiteColorBlack}
             />
           </button>
           <ul 

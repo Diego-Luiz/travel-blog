@@ -19,6 +19,7 @@ const Home = lazy(() => import('./pages/Home/Home'));
 const Tips = lazy(() => import('./pages/Tips/Tips'));
 const PhotoAndVideo = lazy(() => import('./pages/PhotoAndVideo/PhotoAndVideo'));
 const About = lazy(() => import('./pages/About/About'));
+const PageNotFound = lazy(() => import('./components/PageNotFound/PageNotFound'));
 
 class App extends React.Component{
   constructor(props){
@@ -34,7 +35,7 @@ class App extends React.Component{
       toggleMenu: false,
       postModalActive: false,
       bodyWithoutOverflow: false,
-      inAboutSection: false
+      headerWhiteColorBlack: false
     };
     this.appResizeOb = null;
     this.headerResizeOb = null;
@@ -63,20 +64,26 @@ class App extends React.Component{
       const height = entries[0].target.clientHeight;
       if(height !== this.state.headerHeight) this.setState({ headerHeight: height });
     });
-    if(this.headerRef.current) this.headerResizeOb.observe(this.headerRef.current);  
-    if(this.props.location.pathname === '/about') this.setState({ inAboutSection: true });
+    if(this.headerRef.current) this.headerResizeOb.observe(this.headerRef.current);
+    if(this.props.location.pathname === '/' || this.props.location.pathname === '/tips' || this.props.location.pathname === '/photoandvideo'){
+      this.setState({ headerWhiteColorBlack: false });
+    } else {
+      this.setState({ headerWhiteColorBlack: true });
+    }
   }
   componentDidUpdate(prevProps, prevState){
     const { pathname } = this.props.location;
     const { pathname:lastLocation } = prevProps.location;
     const modalRoot = document.getElementById('modal-root');
-    let inAboutSection = false;
     if(pathname !== lastLocation){
+      let headerWhiteColorBlack = true;
+      if(pathname === '/' || pathname === '/tips' || pathname === '/photoandvideo'){
+        headerWhiteColorBlack = false;
+      }
       if(this.state.toggleMenu) this.handleToggleMenu();
-      if(pathname === '/about') inAboutSection = true; 
-      this.setState({
-        inAboutSection,
-        fstSectionIntersected: false
+      this.setState({ 
+        headerWhiteColorBlack,
+        fstSectionIntersected: false 
       });
     }
     if(this.state.postModalActive){
@@ -130,7 +137,7 @@ class App extends React.Component{
       <Routes>
         <Route path='/' element={<Layout 
             firstSectionIntersected={this.state.fstSectionIntersected}
-            isInAboutSection={this.state.inAboutSection}
+            headerWhiteColorBlack={this.state.headerWhiteColorBlack}
             handleToggleMenu={this.handleToggleMenu}
             toggleMenu={this.state.toggleMenu}
             headerHeight={this.state.headerHeight}
@@ -175,6 +182,7 @@ class App extends React.Component{
               windowWidth={this.state.windowWidth}
               postModalActive={this.state.postModalActive}
               handleTogglePostModal={this.handleTogglePostModalActive}
+              setHeaderBackgroundAndColor={this.setHeaderBackgroundAndColor}
               ref={{
                 firstSectionRef: this.firstSectionRef,
                 postModalRef: this.postModalBtnRef
@@ -182,7 +190,9 @@ class App extends React.Component{
             />
           </Suspense>} />
           <Route path='*' element={<Suspense fallback={<LoadingAnimation />}>
-            <h1>Page not found.</h1>
+            <PageNotFound 
+              headerHeight={this.state.headerHeight}
+            />
           </Suspense>} />
         </Route>
       </Routes>
