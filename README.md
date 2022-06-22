@@ -7,7 +7,7 @@ Travellers Club was built based on ![Band of Travellers](https://www.bandoftrave
 The goal with this project was to put my knowledge in frontend web development so far in practice, with a big focus in the use of the React library.
 
 ## Table of contents 📜
-- [About functionality](#functionality)
+- [About the website functionality](#functionality)
 - [How to run the project](#howtorun)
 - [Files structure](#filestructure)
 - [React concepts involved](#reactconcepts)  
@@ -15,7 +15,7 @@ The goal with this project was to put my knowledge in frontend web development s
 - [Built with](#builtwith)
 - [Image credits](#imagecredits)
 
-## About functionality <a name="functionality"></a>
+## About the website functionality <a name="functionality"></a>
 Taking into consideration that this is a project to put concepts in pratice and reinforce the learning process, the blog is not completely functional as ![Band of Travellers](https://www.bandoftravellers.com/); there are some links that doesn't work for example.
 
 - The non-functional items are: 
@@ -26,7 +26,7 @@ Taking into consideration that this is a project to put concepts in pratice and 
   
 ## How to run the project <a name="howtorun"></a>
 - You can acess the blog ![clicking in this link](https://react-trav3l-blog.netlify.app/)
-
+- Clone ...
 ## Files structure <a name="filestructure"></a>
 - ```public``` folder: 
   - ```index.html``` the only HTML needed when using React, containing the basic HTML structure for the website.
@@ -41,7 +41,7 @@ Taking into consideration that this is a project to put concepts in pratice and 
   - ```styles``` containing the global CSS styles visible to all the components in the application
 
 ## Some React concepts involved ⚛️ <a name="reactconcepts"></a>
-These are some of the concepts involving the React library that were put in practice inside the project:
+Below some of the concepts involving the React library that were put in practice inside the project:
 - State & Props management
 - Components
   - Class based components  
@@ -53,10 +53,10 @@ These are some of the concepts involving the React library that were put in prac
 - Conditional rendering
 - Conditional styling
 - Events handling
-- Code splitting with React lazy
+- Code splitting with React.lazy
 - Refs & Forwarding refs
 - React portals
-- Image import
+- Images import
 
 ## Some screenshots 📷 <a name="screenshots"></a> 
 <table align="center">
@@ -98,13 +98,13 @@ These are some of the concepts involving the React library that were put in prac
 - CSS
 - Javascript
 - ![React](https://reactjs.org/)
-- ![Create-react-app](https://create-react-app.dev/)
+- ![Create react app](https://create-react-app.dev/)
 - ![React router](https://reactrouter.com/)
 - ![React icons](https://react-icons.github.io/react-icons/)
 - Npm
 - Git & Github
 - Deployed in ![Netlify](https://www.netlify.com/)
 
-## Image credits <a name="imagecredits"></a>
+## Image credits 🖼️ <a name="imagecredits"></a>
 - The images on this website were taken from ![Unsplash](https://unsplash.com/). Below are all the images used in this project:
 https://unsplash.com/photos/hvPB-UCAmmU, https://unsplash.com/photos/FqqiAvJejto, https://unsplash.com/photos/CvUVTJDB4uI ,https://unsplash.com/photos/ny6tO4ItOEY, https://unsplash.com/photos/bmUa09zy2ZQ, https://unsplash.com/photos/ah-HeguOe9k, https://unsplash.com/photos/jg-6ARMiaPM, https://unsplash.com/photos/98WPMlTl5xo, https://unsplash.com/photos/vLENm-coX5Y, https://unsplash.com/photos/LDTxAlVmdho, https://unsplash.com/photos/Ks4RTBgQ_64, https://unsplash.com/photos/vj_9l20fzj0, https://unsplash.com/photos/PP8Escz15d8, https://unsplash.com/photos/XYrjl3j7smo, https://unsplash.com/photos/ru0KExSZ5to, https://unsplash.com/photos/UP_RojtnvTU
