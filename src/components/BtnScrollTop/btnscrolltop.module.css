@@ -31,4 +31,4 @@
 @media (hover:hover) and (pointer:fine){
     .btn:hover{ border-color: var(--vivid-orange-clr); }
 }
-.btn.--menu-active{ z-index: -1 };
+.btn.--menu-active{ z-index: -1; }
