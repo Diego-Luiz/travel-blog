@@ -1,7 +1,7 @@
 # Travellers Club - Travel blog
 ![image](https://user-images.githubusercontent.com/51066402/175113535-55d8640f-9fa6-4528-af62-848bfb6ff221.png)
 
-Travellers Club is a blog about travel tips in general, destinations, photo and videos. It was built using HTML, CSS, Javascript and React as a Single page application. Responsive, mobile first workflow.
+Travellers Club is a blog about travel tips in general, destinations, photo and videos. It was built using HTML, CSS, Javascript and React, as a Single page application. Responsive, mobile first workflow.
 Travellers Club was built based on ![Band of Travellers](https://www.bandoftravellers.com/), very identical but with some differences. 
 
 The goal with this project was to put my knowledge in frontend web development so far in practice, with a big focus in the use of the React library.
@@ -25,8 +25,15 @@ Taking into consideration that this is a project to put concepts in pratice and 
   - Instagram and Twitter footer links
   
 ## How to run the project <a name="howtorun"></a>
-- You can acess the blog ![clicking in this link](https://react-trav3l-blog.netlify.app/)
-- Clone ...
+- (1) - You can acess the blog ![clicking in this link](https://react-trav3l-blog.netlify.app/)
+- (2) - Running in your computer:
+  - Make sure to have Node.js and NPM installed in your computer
+  - Open the command prompt and clone this repository running ```git clone https://github.com/Diego-Luiz/travel-blog.git``` in the path you want this project
+  - After the project being cloned, open the folder and delete the ```package-lock.json``` file
+  - Access the project's directory in the command prompt and run ```npm install```
+    - If the last step was successfully concluded, now the ```node_modules``` folder should be available
+  - Now you can run the project in the development mode running the ```npm start``` command
+  
 ## Files structure <a name="filestructure"></a>
 - ```public``` folder: 
   - ```index.html``` the only HTML needed when using React, containing the basic HTML structure for the website.
