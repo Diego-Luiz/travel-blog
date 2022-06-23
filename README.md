@@ -2,7 +2,7 @@
 ![image](https://user-images.githubusercontent.com/51066402/175113535-55d8640f-9fa6-4528-af62-848bfb6ff221.png)
 
 Travellers Club is a blog about travel tips in general, destinations, photo and videos. It was built using HTML, CSS, Javascript and React, as a Single page application. Responsive, mobile first workflow.
-Travellers Club was built based on ![Band of Travellers](https://www.bandoftravellers.com/), very identical but with some differences. 
+Travellers Club was built based on [Band of Travellers](https://www.bandoftravellers.com/), very identical but with some differences. 
 
 The goal with this project was to put my knowledge in frontend web development so far in practice, with a big focus in the use of the React library.
 
@@ -16,7 +16,7 @@ The goal with this project was to put my knowledge in frontend web development s
 - [Image credits](#imagecredits)
 
 ## About the website functionality <a name="functionality"></a>
-Taking into consideration that this is a project to put concepts in pratice and reinforce the learning process, the blog is not completely functional as ![Band of Travellers](https://www.bandoftravellers.com/); there are some links that doesn't work for example.
+Taking into consideration that this is a project to put concepts in pratice and reinforce the learning process, the blog is not completely functional as [Band of Travellers](https://www.bandoftravellers.com/); there are some links that doesn't work for example.
 
 - The non-functional items are: 
   - Destinations menu link and its dropdown menu
@@ -25,7 +25,7 @@ Taking into consideration that this is a project to put concepts in pratice and 
   - Instagram and Twitter footer links
   
 ## How to run the project <a name="howtorun"></a>
-- (1) - You can acess the blog ![clicking in this link](https://react-trav3l-blog.netlify.app/)
+- (1) - You can acess the blog [clicking in this link](https://react-trav3l-blog.netlify.app/)
 - (2) - Running in your computer:
   - Make sure to have Node.js and NPM installed in your computer
   - Open the command prompt and clone this repository running ```git clone https://github.com/Diego-Luiz/travel-blog.git``` in the path you want this project
@@ -54,7 +54,7 @@ Below some of the concepts involving the React library that were put in practice
   - Class based components  
   - Components lifecycle management
   - High order component
-- Single page application (routing) management with ![React Router](https://reactrouter.com/)
+- Single page application (routing) management with [React Router](https://reactrouter.com/)
 - CSS modules
 - JSX syntax
 - Conditional rendering
@@ -104,14 +104,14 @@ Below some of the concepts involving the React library that were put in practice
 - HTML
 - CSS
 - Javascript
-- ![React](https://reactjs.org/)
-- ![Create react app](https://create-react-app.dev/)
-- ![React router](https://reactrouter.com/)
-- ![React icons](https://react-icons.github.io/react-icons/)
+- [React](https://reactjs.org/)
+- [Create react app](https://create-react-app.dev/)
+- [React router](https://reactrouter.com/)
+- [React icons](https://react-icons.github.io/react-icons/)
 - Npm
 - Git & Github
-- Deployed in ![Netlify](https://www.netlify.com/)
+- Deployed in [Netlify](https://www.netlify.com/)
 
 ## Image credits 🖼️ <a name="imagecredits"></a>
-- The images on this website were taken from ![Unsplash](https://unsplash.com/). Below are all the images used in this project:
+- The images on this website were taken from [Unsplash](https://unsplash.com/). Below are all the images used in this project:
 https://unsplash.com/photos/hvPB-UCAmmU, https://unsplash.com/photos/FqqiAvJejto, https://unsplash.com/photos/CvUVTJDB4uI ,https://unsplash.com/photos/ny6tO4ItOEY, https://unsplash.com/photos/bmUa09zy2ZQ, https://unsplash.com/photos/ah-HeguOe9k, https://unsplash.com/photos/jg-6ARMiaPM, https://unsplash.com/photos/98WPMlTl5xo, https://unsplash.com/photos/vLENm-coX5Y, https://unsplash.com/photos/LDTxAlVmdho, https://unsplash.com/photos/Ks4RTBgQ_64, https://unsplash.com/photos/vj_9l20fzj0, https://unsplash.com/photos/PP8Escz15d8, https://unsplash.com/photos/XYrjl3j7smo, https://unsplash.com/photos/ru0KExSZ5to, https://unsplash.com/photos/UP_RojtnvTU
